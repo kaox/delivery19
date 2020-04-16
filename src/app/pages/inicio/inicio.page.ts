@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Componente } from 'src/app/interfaces/interfaces';
+import { Componente, Tienda } from 'src/app/interfaces/interfaces';
+import { TiendaService } from 'src/app/services/tienda.service';
 
 @Component({
   selector: 'app-inicio',
@@ -9,10 +10,17 @@ import { Componente } from 'src/app/interfaces/interfaces';
 export class InicioPage implements OnInit {
 
   componentes: Componente[] = [];
+  tiendas: Tienda[] = [];
 
-  constructor() { }
+  constructor(private tiendaService: TiendaService) { }
 
   ngOnInit() {
+    this.tiendaService.getTiendas() 
+      .subscribe( resp => {
+        console.log('tiendas', resp);
+        this.tiendas.push( ...resp);
+      }
+    )
   }
 
 }
