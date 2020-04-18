@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Componente, Tienda } from 'src/app/interfaces/interfaces';
 import { Categorias } from 'src/app/interfaces/categorias';
+import { Distritos } from 'src/app/interfaces/distritos';
 import { TiendaService } from 'src/app/services/tienda.service';
 import { CategoriaService } from 'src/app/services/categoria.service';
 import { DistritoService } from 'src/app/services/distrito.service';
@@ -15,9 +16,10 @@ export class InicioPage implements OnInit {
   componentes: Componente[] = [];
   tiendas: Tienda[] = [];
   categorias: Categorias[] = [];
-  distritos: DistritoService[] = [];
+  distritos: Distritos[] = [];
+  selected_distrito = null;
 
-  constructor(private tiendaService: TiendaService, private categoriaService: CategoriaService) { }
+  constructor(private tiendaService: TiendaService, private categoriaService: CategoriaService, private distritoService: DistritoService) { }
 
   ngOnInit() {
     this.tiendaService.getTiendas() 
@@ -30,9 +32,13 @@ export class InicioPage implements OnInit {
       console.log('categorias', resp);
       this.categorias.push( ...resp);
     });
+    this.distritoService.getDistritos().subscribe( resp => {
+      console.log('distritos', resp);
+      this.distritos.push( ...resp);
+    });
   }
 
-  buscar(event){
+  distritoChange(event){
     console.log(event);
   }
 
