@@ -1,0 +1,42 @@
+[
+    {
+        "codigo": "1",
+        "nombre": "Abarrotes",
+        "icon": ""
+    },
+    {
+        "codigo": "2",
+        "nombre": "Frutas y Verduras",
+        "icon": ""
+    },
+    {
+        "codigo": "3",
+        "nombre": "Carne",
+        "icon": ""
+    },
+    {
+        "codigo": "4",
+        "nombre": "Pollo",
+        "icon": ""
+    },
+    {
+        "codigo": "5",
+        "nombre": "Pescado",
+        "icon": ""
+    },
+    {
+        "codigo": "6",
+        "nombre": "Panaderia y pasteleria",
+        "icon": ""
+    },
+    {
+        "codigo": "7",
+        "nombre": "Farmacia",
+        "icon": ""
+    },
+    {
+        "codigo": "8",
+        "nombre": "Mascotas",
+        "icon": ""
+    }
+]
