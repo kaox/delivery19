@@ -22,7 +22,9 @@ export class InicioPage implements OnInit {
   selected_distrito = '';
   selected_categoria = '';
 
-  constructor(private tiendaService: TiendaService, private categoriaService: CategoriaService, private distritoService: DistritoService) { }
+  constructor(private tiendaService: TiendaService, 
+              private categoriaService: CategoriaService, 
+              private distritoService: DistritoService) { }
 
   ngOnInit() {
     this.tiendaService.getTiendas() 
@@ -48,6 +50,10 @@ export class InicioPage implements OnInit {
 
   categoriaChange(event){
     this.selected_categoria = event.detail.value;
+  }
+
+  openMenu(){
+
   }
 
 }

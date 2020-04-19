@@ -4,4 +4,6 @@ export interface Tienda{
     celular: string;
     categorias: string[];
     distritos: string[];
+    website: string;
+    facebook: string;
 }
