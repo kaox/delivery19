@@ -10,6 +10,7 @@ import { InicioPageRoutingModule } from './inicio-routing.module';
 
 import { InicioPage } from './inicio.page';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { ComponentsModule } from 'src/app/components/components.module';
     IonicModule,
     InicioPageRoutingModule,
     ComponentsModule,
-    IonicSelectableModule
+    IonicSelectableModule,
+    PipesModule
   ],
   declarations: [InicioPage]
 })

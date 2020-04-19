@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Componente, Tienda } from 'src/app/interfaces/interfaces';
+import { Componente } from 'src/app/interfaces/interfaces';
+import { Tienda } from 'src/app/interfaces/tiendas';
 import { Categorias } from 'src/app/interfaces/categorias';
 import { Distritos } from 'src/app/interfaces/distritos';
 import { TiendaService } from 'src/app/services/tienda.service';
@@ -17,7 +18,9 @@ export class InicioPage implements OnInit {
   tiendas: Tienda[] = [];
   categorias: Categorias[] = [];
   distritos: Distritos[] = [];
-  selected_distrito = null;
+  selec_distrito = null;
+  selected_distrito = '';
+  selected_categoria = '';
 
   constructor(private tiendaService: TiendaService, private categoriaService: CategoriaService, private distritoService: DistritoService) { }
 
@@ -40,6 +43,11 @@ export class InicioPage implements OnInit {
 
   distritoChange(event){
     console.log(event);
+    this.selected_distrito = event.value.id_ubigeo;
+  }
+
+  categoriaChange(event){
+    this.selected_categoria = event.detail.value;
   }
 
 }

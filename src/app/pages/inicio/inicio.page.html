@@ -5,32 +5,38 @@
     <ion-row>
       <ion-col size="12" size-lg="6" size-md="6" size-sm="6" size-xs="12" >
         <ion-item>
-          <ion-label>Estoy buscando</ion-label>
-          <ion-select placeholder="Select One" interface="popover">
+          <ion-label>Estoy buscando...</ion-label>
+          <ion-select placeholder="Select One" interface="popover" (ionChange)="categoriaChange($event)">
+            <ion-select-option value="0">Todas</ion-select-option>
             <ion-select-option value="{{categoria.codigo}}" 
-              *ngFor="let categoria of categorias">
+              *ngFor="let categoria of categorias" >
               {{categoria.nombre}}
             </ion-select-option>
           </ion-select>
         </ion-item>
       </ion-col>
       <ion-col size="12" size-lg="6" size-md="6" size-sm="6" size-xs="12" >
-        <ionic-selectable 
-          [(ngModel)]="selected_distrito" 
-          [items]="distritos"
-          itemValueField="id_ubigeo"
-          itemTextField="etiqueta_ubigeo"
-          [canSearch]="true"
-          (onChange)="distritoChange($event)">
-        </ionic-selectable>
-        <!-- <ion-searchbar placeholder="En" animated (ionChange)="buscar($event)"></ion-searchbar> -->
+        <ion-item>
+          <ion-label>En...</ion-label>
+          <ionic-selectable 
+            [(ngModel)]="selec_distrito" 
+            [items]="distritos"
+            itemValueField="id_ubigeo"
+            itemTextField="etiqueta_ubigeo"
+            [canSearch]="true"
+            (onChange)="distritoChange($event)">
+            <ng-template ionicSelectableIconTemplate>
+              <ion-icon name="location-outline"></ion-icon>
+            </ng-template>
+          </ionic-selectable>
+        </ion-item>
       </ion-col>
     </ion-row>
   </ion-grid>
   <ion-grid fixed>
     <ion-row>
       <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12" 
-        *ngFor="let tienda of tiendas">
+        *ngFor="let tienda of tiendas | filtro: selected_categoria: selected_distrito ">
         <ion-card>
           <ion-card-header>
             <ion-card-title>{{ tienda.nombre }}</ion-card-title>

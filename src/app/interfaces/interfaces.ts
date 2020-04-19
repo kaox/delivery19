@@ -3,8 +3,3 @@ export interface Componente{
     name: string;
     redirectTo: string
 }
-
-export interface Tienda{
-    name: string;
-    descripcion: string;
-}
