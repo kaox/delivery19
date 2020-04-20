@@ -41,7 +41,6 @@ export class InicioPage implements OnInit {
   }
 
   distritoChange(event){
-    console.log(event);
     this.selected_distrito = event.value.codigo_ubigeo;
   }
 

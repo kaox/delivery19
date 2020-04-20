@@ -10,7 +10,8 @@ export class FiltroPipe implements PipeTransform {
     console.log(categoria)
     console.log(distrito)
     if ( (categoria === '0' ||categoria === '') && (distrito === '')){
-      return arreglo;
+      console.log('Inicio');
+      return null;
     }else if(categoria === '0' ||categoria === ''){
       return arreglo.filter( item => {
         console.log(item)
