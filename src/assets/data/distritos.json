@@ -2,7 +2,7 @@
 {
     "id_ubigeo": "3929",
     "nombre_ubigeo": "Ancon",
-    "codigo_ubigeo": "02",
+    "codigo_ubigeo": "2",
     "etiqueta_ubigeo": "Ancon, Lima",
     "buscador_ubigeo": "ancon lima",
     "numero_hijos_ubigeo": "0",
@@ -12,7 +12,7 @@
   {
     "id_ubigeo": "3930",
     "nombre_ubigeo": "Ate",
-    "codigo_ubigeo": "03",
+    "codigo_ubigeo": "3",
     "etiqueta_ubigeo": "Ate, Lima",
     "buscador_ubigeo": "ate lima",
     "numero_hijos_ubigeo": "0",
@@ -22,7 +22,7 @@
   {
     "id_ubigeo": "3931",
     "nombre_ubigeo": "Barranco",
-    "codigo_ubigeo": "04",
+    "codigo_ubigeo": "4",
     "etiqueta_ubigeo": "Barranco, Lima",
     "buscador_ubigeo": "barranco lima",
     "numero_hijos_ubigeo": "0",
@@ -32,7 +32,7 @@
   {
     "id_ubigeo": "3932",
     "nombre_ubigeo": "Breña",
-    "codigo_ubigeo": "05",
+    "codigo_ubigeo": "5",
     "etiqueta_ubigeo": "Breña, Lima",
     "buscador_ubigeo": "brena lima",
     "numero_hijos_ubigeo": "0",
@@ -42,7 +42,7 @@
   {
     "id_ubigeo": "3933",
     "nombre_ubigeo": "Carabayllo",
-    "codigo_ubigeo": "06",
+    "codigo_ubigeo": "6",
     "etiqueta_ubigeo": "Carabayllo, Lima",
     "buscador_ubigeo": "carabayllo lima",
     "numero_hijos_ubigeo": "0",
@@ -52,7 +52,7 @@
   {
     "id_ubigeo": "3928",
     "nombre_ubigeo": "Cercado de Lima",
-    "codigo_ubigeo": "01",
+    "codigo_ubigeo": "1",
     "etiqueta_ubigeo": "Cercado de Lima, Lima",
     "buscador_ubigeo": "cercado de lima lima",
     "numero_hijos_ubigeo": "0",
@@ -62,7 +62,7 @@
   {
     "id_ubigeo": "3934",
     "nombre_ubigeo": "Chaclacayo",
-    "codigo_ubigeo": "07",
+    "codigo_ubigeo": "7",
     "etiqueta_ubigeo": "Chaclacayo, Lima",
     "buscador_ubigeo": "chaclacayo lima",
     "numero_hijos_ubigeo": "0",
@@ -72,7 +72,7 @@
   {
     "id_ubigeo": "3935",
     "nombre_ubigeo": "Chorrillos",
-    "codigo_ubigeo": "08",
+    "codigo_ubigeo": "8",
     "etiqueta_ubigeo": "Chorrillos, Lima",
     "buscador_ubigeo": "chorrillos lima",
     "numero_hijos_ubigeo": "0",
@@ -82,7 +82,7 @@
   {
     "id_ubigeo": "3936",
     "nombre_ubigeo": "Cieneguilla",
-    "codigo_ubigeo": "09",
+    "codigo_ubigeo": "9",
     "etiqueta_ubigeo": "Cieneguilla, Lima",
     "buscador_ubigeo": "cieneguilla lima",
     "numero_hijos_ubigeo": "0",

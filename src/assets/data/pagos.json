@@ -1,0 +1,17 @@
+[
+    {
+        "icon": "cash-outline",
+        "name": "Efectivo",
+        "codigo": "1"
+    },
+    {
+        "icon": "card-outline",
+        "name": "Tarjeta",
+        "codigo": "2"
+    },
+    {
+        "icon": "logo-google-playstore",
+        "name": "Aplicación",
+        "codigo": "3"
+    }
+]

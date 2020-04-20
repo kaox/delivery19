@@ -2,58 +2,76 @@
 
 <ion-content>
 
-  <form #form="ngForm" (ngSubmit)="login(form)">
+  <form #form="ngForm" (ngSubmit)="register(form)">
     <ion-grid>
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-          <ion-item>
-            <ion-label position="floating">Nombre</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Descripción</ion-label>
-            <ion-textarea></ion-textarea>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Facebook</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Web</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Telefono</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">WhastApp</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Departamento</ion-label>
-            <ion-select placeholder="Select One">
-              <ion-select-option value="f">Female</ion-select-option>
-              <ion-select-option value="m">Male</ion-select-option>
-            </ion-select>
-          </ion-item>
-          <ion-item>
-            <ion-label>Provincia</ion-label>
-            <ion-select placeholder="Select One">
-              <ion-select-option value="f">Female</ion-select-option>
-              <ion-select-option value="m">Male</ion-select-option>
-            </ion-select>
-          </ion-item>
-          <ion-item>
-            <ion-label>Distrito</ion-label>
-            <ion-select placeholder="Select One">
-              <ion-select-option value="f">Female</ion-select-option>
-              <ion-select-option value="m">Male</ion-select-option>
-            </ion-select>
-          </ion-item>
+          <ion-item-group>
+            <ion-title>
+              <ion-icon name="home-outline" ></ion-icon> Datos Negocio
+            </ion-title>
+            <ion-item lines="full">
+              <ion-label position="floating">Nombre de la tienda</ion-label>
+              <ion-input type="text" name="nombre" [(ngModel)]="registerTienda.name"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Descripción (Max 100 caracteres)</ion-label>
+              <ion-textarea maxlength="100" name="descripcion" [(ngModel)]="registerTienda.descripcion"></ion-textarea>
+            </ion-item>
+            <ion-item>
+              <ion-label>Categorias</ion-label>
+              <ion-select placeholder="Select One" (ionChange)="categoriaChange($event)" multiple>
+                <ion-select-option value="0">Todas</ion-select-option>
+                <ion-select-option value="{{categoria.codigo}}" 
+                  *ngFor="let categoria of categorias" >
+                  {{categoria.nombre}}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Distritos de cobertura</ion-label>
+              <ion-select placeholder="Select One" (ionChange)="categoriaChange($event)" multiple>
+                <ion-select-option value="0">Todas</ion-select-option>
+                <ion-select-option value="{{distrito.codigo_ubigeo}}" 
+                  *ngFor="let distrito of distritos" >
+                  {{distrito.etiqueta_ubigeo}}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">URL Facebook</ion-label>
+              <ion-input type="url" name="url_facebook" [(ngModel)]="registerTienda.facebook"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">URL Web</ion-label>
+              <ion-input type="url" name="url_web" [(ngModel)]="registerTienda.website"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Telefono</ion-label>
+              <ion-input type="tel" name="telefono" ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">WhastApp</ion-label>
+              <ion-input type="tel" name="whastapp" [(ngModel)]="registerTienda.celular" ></ion-input>
+            </ion-item>
+          </ion-item-group>
+          <br/>
+          <ion-item-group>
+            <ion-title>
+              <ion-icon name="person-outline"></ion-icon> Datos Contacto
+            </ion-title>
+            <ion-item>
+              <ion-label position="floating">Email</ion-label>
+              <ion-input type="email" name="email"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Nombre contacto</ion-label>
+              <ion-input type="text" name="nombre_contacto" ></ion-input>
+            </ion-item>
+          </ion-item-group>
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row justify-content-center>
         <ion-col>
           <ion-button type="submit" color="primary" expand="block">Guardar</ion-button>
         </ion-col>

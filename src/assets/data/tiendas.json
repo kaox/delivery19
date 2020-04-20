@@ -1,47 +1,44 @@
 [
     {
-        "nombre": "BIOAGRICULTURA CASA BLANCA",
-        "descripcion": "Productos: Frutas, verduras, hierbas, tubérculos y hortalizas Reparto: Martes",
-        "celular":"51999184590",
-        "categorias": ["1"],
-        "distritos":["3929","3930"],
-        "website":"",
-        "facebook": "http://www.facebook.com"
+      "codigo": "A4710",
+      "latitud": -12.043985,
+      "longitud": -76.9701869,
+      "nombre": "Inversiones Yorsy",
+      "celular": "960843583",
+      "codigo_departamento": 15,
+      "codigo_provincia": 1,
+      "distritos": ["1"],
+      "direccion": "Calle Los Alcanfores 1292 Urb Los Robles Santa Anita",
+      "entrega": ["2"],
+      "pago": ["1","2","3"],
+      "categorias": ["9"]
     },
     {
-        "nombre": "INDUSTRIAS DEL GEL PERÚ",
-        "descripcion": "Gel Antibacterial - Alcohol Isopropílico para limpiar celulares. Cantidad mínima un ciento.",
-        "celular":"51957834892",
-        "categorias": ["1","3"],
-        "distritos":["3929"],
-        "website":"http://www.google.com",
-        "facebook": "http://www.facebook.com"
+      "codigo": "A4701",
+      "latitud": -11.94218072,
+      "longitud": -76.70310743,
+      "nombre": "Tiendas \" Ore ",
+      "celular": "962014845",
+      "codigo_departamento": 15,
+      "codigo_provincia": 1,
+      "distritos": ["1"],
+      "direccion": "Mz.C.Lt4.Coop.De Viv.El Jardín.",
+      "entrega": ["2"],
+      "pago": ["1","2","3"],
+      "categorias": ["9"]
     },
     {
-        "nombre": "FOOD CO.",
-        "descripcion": "Productos: Canastas de frutas, vegetales y menestras, pescados y mariscos, vinos, aceite de oliva, Cereales y mucho más!! Pedidos al mail: Pedidos@foodco.pe Reparto: Lunes, miércoles, viernes y sábados (Barranco, Miraflores, San isidro, Magdalena) Martes, jueves y sábados (Chorrillos, Surco, San Borja y La Molina)",
-        "celular":"51957834892",
-        "categorias": ["1"],
-        "distritos":["3930"],
-        "website":"http://www.google.com",
-        "facebook": ""
-    },
-    {
-        "nombre": "BOTICAS MEDFARMA SALUD",
-        "descripcion": "Productos: Alcohol gel, guantes, mascarillas de triple pliegue y N95, jabon liquido, vitamina C redoxon, alcohol 96°, desinfectantes, termometro digital, paracetamol, medicamentos",
-        "celular":"51957834892",
-        "categorias": ["3"],
-        "distritos":["3929","3930"],
-        "website":"http://www.google.com",
-        "facebook": "http://www.facebook.com"
-    },
-    {
-        "nombre": "FOOD CO.",
-        "descripcion": "Productos: Canastas de frutas, vegetales y menestras, pescados y mariscos, vinos, aceite de oliva, Cereales y mucho más!! Pedidos al mail: Pedidos@foodco.pe Reparto: Lunes, miércoles, viernes y sábados (Barranco, Miraflores, San isidro, Magdalena) Martes, jueves y sábados (Chorrillos, Surco, San Borja y La Molina)",
-        "celular":"51957834892",
-        "categorias": ["1","2","3"],
-        "distritos":["3929","3930","3931"],
-        "website":"http://www.google.com",
-        "facebook": "http://www.facebook.com"
+      "codigo": "A4511",
+      "latitud": -12.0597158,
+      "longitud": -77.0642403,
+      "nombre": "Bodega #Yo#Me#Quedo#En#Casa",
+      "celular": "985222113",
+      "codigo_departamento": 15,
+      "codigo_provincia": 1,
+      "distritos": ["1"],
+      "direccion": "Jirón Pablo Arguedas 1153 Cercado De Lima",
+      "entrega": ["2"],
+      "pago": ["1","3"],
+      "categorias": ["1","9"]
     }
-]
+  ]

@@ -29,23 +29,20 @@ export class InicioPage implements OnInit {
   ngOnInit() {
     this.tiendaService.getTiendas() 
       .subscribe( resp => {
-        console.log('tiendas', resp);
         this.tiendas.push( ...resp);
       }
     );
     this.categoriaService.getCategorias().subscribe( resp => {
-      console.log('categorias', resp);
       this.categorias.push( ...resp);
     });
     this.distritoService.getDistritos().subscribe( resp => {
-      console.log('distritos', resp);
       this.distritos.push( ...resp);
     });
   }
 
   distritoChange(event){
     console.log(event);
-    this.selected_distrito = event.value.id_ubigeo;
+    this.selected_distrito = event.value.codigo_ubigeo;
   }
 
   categoriaChange(event){

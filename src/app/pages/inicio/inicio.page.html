@@ -21,7 +21,7 @@
           <ionic-selectable 
             [(ngModel)]="selec_distrito" 
             [items]="distritos"
-            itemValueField="id_ubigeo"
+            itemValueField="codigo_ubigeo"
             itemTextField="etiqueta_ubigeo"
             [canSearch]="true"
             (onChange)="distritoChange($event)">
@@ -47,16 +47,42 @@
             <ion-card-title>
               {{ tienda.nombre }}
             </ion-card-title>
-            <ion-card-content>{{ tienda.descripcion }}</ion-card-content>
-            <ion-card-subtitle (click)="abrirWhastApp()" routerLink="https://wa.me/{{ tienda.celular }}">
-              <ion-icon name="logo-whatsapp"></ion-icon> {{ tienda.celular }}
-            </ion-card-subtitle>
-            <ion-card-subtitle>
-              <ion-icon name="home-outline"></ion-icon> {{ tienda.website }}
-            </ion-card-subtitle>
-            <ion-card-subtitle>
-              <ion-icon name="logo-facebook"></ion-icon> {{ tienda.facebook }}
-            </ion-card-subtitle>
+            <ion-card-content>
+              <p>{{ tienda.descripcion }}</p>
+              <ion-list lines="none">
+                <ion-item>
+                  <ion-label>
+                    <h2>Pago</h2>
+                    <p>
+                      <ng-template ngFor let-item [ngForOf]="tienda.pago" let-i="index">
+                        <ng-template [ngIf]="item == 1"><ion-icon name="cash-outline"></ion-icon> Efectivo </ng-template>
+                        <ng-template [ngIf]="item == 2"><ion-icon name="card-outline"></ion-icon> Tarjeta </ng-template>
+                        <ng-template [ngIf]="item == 3"><ion-icon name="logo-google-playstore"></ion-icon> Aplicación </ng-template>
+                      </ng-template>
+                    </p>
+                  </ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-label>
+                    <h2>Entrega</h2>
+                    <p>
+                      <ng-template ngFor let-item [ngForOf]="tienda.entrega" let-i="index">
+                        <ng-template [ngIf]="item == 1"><ion-icon name="bicycle-outline"></ion-icon> Delivery </ng-template>
+                        <ng-template [ngIf]="item == 2"><ion-icon name="cart-outline"></ion-icon> Recojo en tienda </ng-template>
+                      </ng-template>
+                    </p>
+                  </ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-label>
+                    <h2>Contacto</h2>
+                    <p *ngIf="tienda.celular"><ion-icon name="logo-whatsapp"></ion-icon> {{ tienda.celular }}</p>
+                    <p *ngIf="tienda.website"><ion-icon name="home-outline"></ion-icon> {{ tienda.website }}</p>
+                    <p *ngIf="tienda.facebook"><ion-icon name="logo-facebook"></ion-icon> {{ tienda.facebook }}</p>
+                  </ion-label>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
           </ion-card-header>
         </ion-card>
       </ion-col>

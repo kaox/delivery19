@@ -36,6 +36,11 @@
     },
     {
         "codigo": "8",
+        "nombre": "Higiene y limpieza",
+        "icon": ""
+    },
+    {
+        "codigo": "9",
         "nombre": "Mascotas",
         "icon": ""
     }

@@ -1,0 +1,12 @@
+[
+    {
+        "icon": "bicycle-outline",
+        "name": "Delivery",
+        "codigo": "1"
+    },
+    {
+        "icon": "cart-outline",
+        "name": "Recojo en tienda",
+        "codigo": "2"
+    }
+]
