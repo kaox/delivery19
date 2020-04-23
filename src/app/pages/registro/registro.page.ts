@@ -18,6 +18,7 @@ export class RegistroPage implements OnInit {
 
   categorias: Categorias[] = [];
   distritos: Distritos[] = [];
+  registerTienda: Tienda;
   // registerTienda: Tienda = {
   //   name: 'test',
   //   categorias: ['1','3'],

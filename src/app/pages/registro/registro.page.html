@@ -20,7 +20,7 @@
             </ion-item>
             <ion-item>
               <ion-label>Categorias</ion-label>
-              <ion-select placeholder="Select One" (ionChange)="categoriaChange($event)" multiple>
+              <ion-select placeholder="Select One" multiple>
                 <ion-select-option value="0">Todas</ion-select-option>
                 <ion-select-option value="{{categoria.codigo}}" 
                   *ngFor="let categoria of categorias" >
@@ -30,7 +30,7 @@
             </ion-item>
             <ion-item>
               <ion-label>Distritos de cobertura</ion-label>
-              <ion-select placeholder="Select One" (ionChange)="categoriaChange($event)" multiple>
+              <ion-select placeholder="Select One" multiple>
                 <ion-select-option value="0">Todas</ion-select-option>
                 <ion-select-option value="{{distrito.codigo_ubigeo}}" 
                   *ngFor="let distrito of distritos" >

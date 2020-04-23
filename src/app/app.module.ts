@@ -12,6 +12,8 @@ import { ComponentsModule } from './components/components.module';
 
 import { HttpClientModule} from '@angular/common/http'
 import { PipesModule } from './pipes/pipes.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +24,8 @@ import { PipesModule } from './pipes/pipes.module';
     AppRoutingModule,
     ComponentsModule,
     HttpClientModule,
-    PipesModule
+    PipesModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar,

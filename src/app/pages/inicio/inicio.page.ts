@@ -29,7 +29,8 @@ export class InicioPage implements OnInit {
   ngOnInit() {
     this.tiendaService.getTiendas() 
       .subscribe( resp => {
-        this.tiendas.push( ...resp);
+        //console.log(resp['tiendas']);
+        this.tiendas.push( ...resp['tiendas']);
       }
     );
     this.categoriaService.getCategorias().subscribe( resp => {

@@ -11,8 +11,11 @@ export class TiendaService {
   constructor(private http: HttpClient) { }
 
   getTiendas(){
-    //return this.http.get<TiendaEstado[]>('http://www.tuempresa.gob.pe/ubicatubodega/public/ajax/selecciona-bodega/15/01')
-    return this.http.get<Tienda[]>('/assets/data/tiendas.json')
+    // var resp = this.http.get('https://recojoentienda-ws.herokuapp.com/tienda');
+    // console.log(resp['ok']);
+    // return resp['tiendas'];
+    return this.http.get('https://recojoentienda-ws.herokuapp.com/tienda');
+    //return this.http.get<Tienda[]>('/assets/data/tiendas.json')
   }
 
   registro( tienda: Tienda){
