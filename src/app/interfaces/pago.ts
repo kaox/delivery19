@@ -1,5 +1,5 @@
 export interface Pago{
     codigo: string;
-    nombre: string;
+    name: string;
     icon: string;
 }

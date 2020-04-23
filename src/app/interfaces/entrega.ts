@@ -1,5 +1,5 @@
 export interface Entrega{
     codigo: string;
-    nombre: string;
+    name: string;
     icon: string;
 }

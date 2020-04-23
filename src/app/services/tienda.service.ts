@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Tienda, TiendaEstado } from '../interfaces/tiendas';
+import { Tienda, TiendaAdmin } from '../interfaces/tiendas';
 import { resolve } from 'url';
 
 @Injectable({
@@ -11,16 +11,14 @@ export class TiendaService {
   constructor(private http: HttpClient) { }
 
   getTiendas(){
-    // var resp = this.http.get('https://recojoentienda-ws.herokuapp.com/tienda');
-    // console.log(resp['ok']);
-    // return resp['tiendas'];
-    return this.http.get('https://recojoentienda-ws.herokuapp.com/tienda');
+    return this.http.get('http://localhost:3002/tienda');
+    //return this.http.get('https://recojoentienda-ws.herokuapp.com/tienda');
     //return this.http.get<Tienda[]>('/assets/data/tiendas.json')
   }
 
-  registro( tienda: Tienda){
+  registro( tienda: TiendaAdmin){
     return new Promise( resolve => {
-      this.http.post('${URL}/tienda/create', tienda).subscribe( resp => {
+      this.http.post('http://localhost:3002/tienda_admin', tienda).subscribe( resp => {
         if(resp ['ok']){
           resolve(true);
         }else{

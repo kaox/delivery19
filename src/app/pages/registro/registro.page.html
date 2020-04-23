@@ -1,8 +1,8 @@
 <app-header titulo="Agregar Delivery"></app-header>
 
 <ion-content>
-
-  <form #form="ngForm" (ngSubmit)="register(form)">
+<div class=form-container>
+  <form #formTienda="ngForm" (ngSubmit)="register(formTienda);">
     <ion-grid>
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
@@ -12,17 +12,18 @@
             </ion-title>
             <ion-item lines="full">
               <ion-label position="floating">Nombre de la tienda</ion-label>
-              <ion-input type="text" name="nombre" [(ngModel)]="registerTienda.name"></ion-input>
+              <!-- <ion-input type="text" ngModel #name="ngModel" name="name" ></ion-input> -->
+              <ion-input type="text" [(ngModel)]="tienda.name" name="name" ></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Descripción (Max 100 caracteres)</ion-label>
-              <ion-textarea maxlength="100" name="descripcion" [(ngModel)]="registerTienda.descripcion"></ion-textarea>
+              <ion-textarea maxlength="100" [(ngModel)]="tienda.descripcion" name="descripcion" ></ion-textarea>
             </ion-item>
             <ion-item>
               <ion-label>Categorias</ion-label>
-              <ion-select placeholder="Select One" multiple>
-                <ion-select-option value="0">Todas</ion-select-option>
-                <ion-select-option value="{{categoria.codigo}}" 
+              <ion-select placeholder="Select One" multiple [(ngModel)]="tienda.categorias" name="categorias">
+                <ion-select-option value="0" >Todas</ion-select-option>
+                <ion-select-option [value]="categoria.codigo" 
                   *ngFor="let categoria of categorias" >
                   {{categoria.nombre}}
                 </ion-select-option>
@@ -30,45 +31,68 @@
             </ion-item>
             <ion-item>
               <ion-label>Distritos de cobertura</ion-label>
-              <ion-select placeholder="Select One" multiple>
-                <ion-select-option value="0">Todas</ion-select-option>
-                <ion-select-option value="{{distrito.codigo_ubigeo}}" 
-                  *ngFor="let distrito of distritos" >
+              <ion-select placeholder="Select One" multiple [(ngModel)]="tienda.distritos" name="distritos">
+                <ion-select-option value="0" >Todas</ion-select-option>
+                <ion-select-option [value]="distrito.codigo_ubigeo" 
+                  *ngFor="let distrito of distritos"  >
                   {{distrito.etiqueta_ubigeo}}
                 </ion-select-option>
               </ion-select>
             </ion-item>
             <ion-item>
               <ion-label position="floating">URL Facebook</ion-label>
-              <ion-input type="url" name="url_facebook" [(ngModel)]="registerTienda.facebook"></ion-input>
+              <ion-input type="url" [(ngModel)]="tienda.facebook" name="facebook" ></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">URL Web</ion-label>
-              <ion-input type="url" name="url_web" [(ngModel)]="registerTienda.website"></ion-input>
+              <ion-input type="url" [(ngModel)]="tienda.website" name="website" ></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Telefono</ion-label>
-              <ion-input type="tel" name="telefono" ></ion-input>
+              <ion-input type="tel" [(ngModel)]="tienda.telefono" name="telefono" ></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">WhastApp</ion-label>
-              <ion-input type="tel" name="whastapp" [(ngModel)]="registerTienda.celular" ></ion-input>
+              <ion-input type="tel" [(ngModel)]="tienda.celular" name="celular" ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Metodo de Pagos</ion-label>
+              <ion-select placeholder="Select One" multiple [(ngModel)]="tienda.pago" name="pagos">
+                <ion-select-option value="0" >Todas</ion-select-option>
+                <ion-select-option [value]="pago.codigo" 
+                  *ngFor="let pago of pagos"  >
+                  {{pago.name}}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Metodo de Entrega</ion-label>
+              <ion-select placeholder="Select One" multiple [(ngModel)]="tienda.entrega" name="entregas">
+                <ion-select-option value="0" >Todas</ion-select-option>
+                <ion-select-option [value]="entrega.codigo" 
+                  *ngFor="let entrega of entregas"  >
+                  {{entrega.name}}
+                </ion-select-option>
+              </ion-select>
             </ion-item>
           </ion-item-group>
-          <br/>
+          <!-- <br/>
           <ion-item-group>
             <ion-title>
               <ion-icon name="person-outline"></ion-icon> Datos Contacto
             </ion-title>
             <ion-item>
               <ion-label position="floating">Email</ion-label>
-              <ion-input type="email" name="email"></ion-input>
+              <ion-input type="email"
+                pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                name="correo"
+                [(ngmodel)]="tienda.correo" required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Nombre contacto</ion-label>
-              <ion-input type="text" name="nombre_contacto" ></ion-input>
+              <ion-input type="text" [(ngmodel)]="tienda.nombre_contacto" name="nombre_contacto" ></ion-input>
             </ion-item>
-          </ion-item-group>
+          </ion-item-group> -->
         </ion-col>
       </ion-row>
       <ion-row justify-content-center>
@@ -78,6 +102,6 @@
       </ion-row>
     </ion-grid>
   </form>
-
+</div>
 
 </ion-content>

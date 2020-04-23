@@ -43,5 +43,15 @@
         "codigo": "9",
         "nombre": "Mascotas",
         "icon": ""
+    },
+    {
+        "codigo": "10",
+        "nombre": "Gas",
+        "icon": ""
+    },
+    {
+        "codigo": "11",
+        "nombre": "Supermercado",
+        "icon": ""
     }
 ]

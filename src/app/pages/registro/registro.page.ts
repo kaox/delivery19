@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {NgForm} from '@angular/forms';
 
 import { Categorias } from 'src/app/interfaces/categorias';
 import { Distritos } from 'src/app/interfaces/distritos';
-import { Tienda } from 'src/app/interfaces/tiendas';
+import { TiendaAdmin } from 'src/app/interfaces/tiendas';
 import { CategoriaService } from 'src/app/services/categoria.service';
 import { DistritoService } from 'src/app/services/distrito.service';
 import { TiendaService } from 'src/app/services/tienda.service';
-import { NgForm } from '@angular/forms';
+import { PagoService } from 'src/app/services/pago.service';
+import { EntregaService } from 'src/app/services/entrega.service';
+import { Entrega } from 'src/app/interfaces/entrega';
+import { Pago } from 'src/app/interfaces/pago';
+
 
 @Component({
   selector: 'app-registro',
@@ -18,35 +23,74 @@ export class RegistroPage implements OnInit {
 
   categorias: Categorias[] = [];
   distritos: Distritos[] = [];
-  registerTienda: Tienda;
-  // registerTienda: Tienda = {
-  //   name: 'test',
-  //   categorias: ['1','3'],
-  //   descripcion: 'adada',
-  //   celular: '342342',
-  //   distritos: ['0'],
-  //   facebook: '',
-  //   website: ''
-  // }
+  pagos: Pago[] = [];
+  entregas: Entrega[] = [];
+  // registerTienda: Tienda;
+  tienda: TiendaAdmin = {
+    name: '',
+    descripcion: '',
+    telefono: '',
+    celular: '',
+    categorias: [''],
+    provincia: '',
+    distritos: [''],
+    direccion: '',
+    website: '',
+    facebook: '',
+    pago: [''],
+    entrega: [''],
+    latitud: '',
+    longitud: '',
+    nombre_contacto: '',
+    correo: ''
+  };
+
 
   constructor(private categoriaService: CategoriaService, 
     private distritoService: DistritoService,
     private tiendaService: TiendaService,
-    private http: HttpClient) { }
+    private pagoService: PagoService,
+    private entregaService: EntregaService,
+    private http: HttpClient
+    ) {
+  }
 
   ngOnInit() {
+
     this.categoriaService.getCategorias().subscribe( resp => {
       this.categorias.push( ...resp);
     });
     this.distritoService.getDistritos().subscribe( resp => {
       this.distritos.push( ...resp);
     });
+    this.categoriaService.getCategorias().subscribe( resp => {
+      this.categorias.push( ...resp);
+    });
+    this.pagoService.getPagos().subscribe( resp => {
+      this.pagos.push( ...resp);
+    });
+    this.entregaService.getEntregas().subscribe( resp => {
+      this.entregas.push( ...resp);
+    });
   }
 
-  async register(form: NgForm ){
-    if(form.invalid){
-      return;
+  resetForm(){
+    //this.tiendaForm.reset();
+  }
+
+  register(formTienda: NgForm){
+    let tienda: TiendaAdmin = formTienda.value;
+    console.log(formTienda.value);
+    console.log(formTienda.valid);
+    //console.log(this.tiendaForm.value)
+    if(formTienda.valid) {
+      this.tiendaService.registro(formTienda.value);
+      formTienda.resetForm();
     }
+  }
+    // if(form.invalid){
+    //   return;
+    // }
     //const valido = this.tiendaService.registro(this.registerTienda);
     //if(valido){
       //Mostrar msg ok
@@ -54,6 +98,6 @@ export class RegistroPage implements OnInit {
     //}else{
       //this.u
     //}
-  }
+  // }
 
 }
