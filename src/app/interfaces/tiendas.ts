@@ -9,8 +9,8 @@ export interface Tienda{
     direccion: string;
     website: string;
     facebook: string;
-    pago: string[];
-    entrega: string[];
+    pagos: string[];
+    entregas: string[];
     latitud: string;
     longitud: string;
     nombre_contacto: string;
@@ -28,8 +28,8 @@ export interface TiendaAdmin{
     direccion: string;
     website: string;
     facebook: string;
-    pago: string[];
-    entrega: string[];
+    pagos: string[];
+    entregas: string[];
     latitud: string;
     longitud: string;
     nombre_contacto: string;

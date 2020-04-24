@@ -16,8 +16,8 @@
               <ion-input type="text" [(ngModel)]="tienda.name" name="name" required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label position="floating">Descripción (Max 100 caracteres)</ion-label>
-              <ion-textarea maxlength="100" [(ngModel)]="tienda.descripcion" name="descripcion" ></ion-textarea>
+              <ion-label position="floating">Descripción (Ingrese que vende, monto minimo, costo de delivery, etc)</ion-label>
+              <ion-textarea maxlength="200" [(ngModel)]="tienda.descripcion" name="descripcion" ></ion-textarea>
             </ion-item>
             <ion-item>
               <ion-label>Categorias</ion-label>
@@ -55,7 +55,7 @@
             </ion-item>
             <ion-item>
               <ion-label>Metodo de Pagos</ion-label>
-              <ion-select placeholder="Selecciona..." multiple [(ngModel)]="tienda.pago" name="pagos">
+              <ion-select placeholder="Selecciona..." multiple [(ngModel)]="tienda.pagos" name="pagos">
                 <ion-select-option [value]="pago.codigo" 
                   *ngFor="let pago of pagos"  >
                   {{pago.name}}
@@ -64,7 +64,7 @@
             </ion-item>
             <ion-item>
               <ion-label>Metodo de Entrega</ion-label>
-              <ion-select placeholder="Selecciona..." multiple [(ngModel)]="tienda.entrega" name="entregas">
+              <ion-select placeholder="Selecciona..." multiple [(ngModel)]="tienda.entregas" name="entregas">
                 <ion-select-option [value]="entrega.codigo" 
                   *ngFor="let entrega of entregas"  >
                   {{entrega.name}}

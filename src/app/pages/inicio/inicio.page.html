@@ -45,7 +45,7 @@
               </ion-button>
             </div> -->
             <ion-card-title>
-              {{ tienda.nombre }}
+              {{ tienda.name }}
             </ion-card-title>
             <ion-card-content>
               <p>{{ tienda.descripcion }}</p>
@@ -54,7 +54,7 @@
                   <ion-label>
                     <h2>Pago</h2>
                     <p>
-                      <ng-template ngFor let-item [ngForOf]="tienda.pago" let-i="index">
+                      <ng-template ngFor let-item [ngForOf]="tienda.pagos" let-i="index">
                         <ng-template [ngIf]="item == 1"><ion-icon name="cash-outline"></ion-icon> Efectivo </ng-template>
                         <ng-template [ngIf]="item == 2"><ion-icon name="card-outline"></ion-icon> Tarjeta </ng-template>
                         <ng-template [ngIf]="item == 3"><ion-icon name="logo-google-playstore"></ion-icon> Aplicación </ng-template>
@@ -66,7 +66,7 @@
                   <ion-label>
                     <h2>Entrega</h2>
                     <p>
-                      <ng-template ngFor let-item [ngForOf]="tienda.entrega" let-i="index">
+                      <ng-template ngFor let-item [ngForOf]="tienda.entregas" let-i="index">
                         <ng-template [ngIf]="item == 1"><ion-icon name="bicycle-outline"></ion-icon> Delivery </ng-template>
                         <ng-template [ngIf]="item == 2"><ion-icon name="cart-outline"></ion-icon> Recojo en tienda </ng-template>
                       </ng-template>
