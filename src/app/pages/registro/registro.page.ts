@@ -88,16 +88,5 @@ export class RegistroPage implements OnInit {
       formTienda.resetForm();
     }
   }
-    // if(form.invalid){
-    //   return;
-    // }
-    //const valido = this.tiendaService.registro(this.registerTienda);
-    //if(valido){
-      //Mostrar msg ok
-      //this.navC
-    //}else{
-      //this.u
-    //}
-  // }
 
 }

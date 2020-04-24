@@ -7,23 +7,20 @@ export class FiltroPipe implements PipeTransform {
 
   transform(arreglo: any[], categoria: string, distrito: string): any[] {
 
-    if ( (categoria === '0' ||categoria === '') && (distrito === '')){
+    if ( (categoria === '0' || categoria === '') && (distrito === '' || distrito === '0')){
       return null;
-    }else if(categoria === '0' ||categoria === ''){
+    }else if(categoria === '0' || categoria === ''){
       return arreglo.filter( item => {
-        //console.log(item)
         return item.distritos.includes(distrito);
-        //return null;
       });
-    }else if(distrito === ''){
+    }else if(distrito === '' || distrito === '0'){
       return arreglo.filter( item => {
-        //console.log(item)
-        //return item.categorias.includes(categoria);
-        return null;
+        console.log(item)
+        return item.categorias.includes(categoria);
+        // return null;
       });
     }else{
       return arreglo.filter( item => {
-        //console.log(item)
         return item.categorias.includes(categoria) && item.distritos.includes(distrito);
       });
     }

@@ -13,7 +13,7 @@
             <ion-item lines="full">
               <ion-label position="floating">Nombre de la tienda</ion-label>
               <!-- <ion-input type="text" ngModel #name="ngModel" name="name" ></ion-input> -->
-              <ion-input type="text" [(ngModel)]="tienda.name" name="name" ></ion-input>
+              <ion-input type="text" [(ngModel)]="tienda.name" name="name" required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Descripción (Max 100 caracteres)</ion-label>
@@ -21,8 +21,7 @@
             </ion-item>
             <ion-item>
               <ion-label>Categorias</ion-label>
-              <ion-select placeholder="Select One" multiple [(ngModel)]="tienda.categorias" name="categorias">
-                <ion-select-option value="0" >Todas</ion-select-option>
+              <ion-select placeholder="Selecciona..." multiple [(ngModel)]="tienda.categorias" name="categorias"  >
                 <ion-select-option [value]="categoria.codigo" 
                   *ngFor="let categoria of categorias" >
                   {{categoria.nombre}}
@@ -31,8 +30,7 @@
             </ion-item>
             <ion-item>
               <ion-label>Distritos de cobertura</ion-label>
-              <ion-select placeholder="Select One" multiple [(ngModel)]="tienda.distritos" name="distritos">
-                <ion-select-option value="0" >Todas</ion-select-option>
+              <ion-select placeholder="Selecciona..." multiple [(ngModel)]="tienda.distritos" name="distritos" >
                 <ion-select-option [value]="distrito.codigo_ubigeo" 
                   *ngFor="let distrito of distritos"  >
                   {{distrito.etiqueta_ubigeo}}
@@ -57,8 +55,7 @@
             </ion-item>
             <ion-item>
               <ion-label>Metodo de Pagos</ion-label>
-              <ion-select placeholder="Select One" multiple [(ngModel)]="tienda.pago" name="pagos">
-                <ion-select-option value="0" >Todas</ion-select-option>
+              <ion-select placeholder="Selecciona..." multiple [(ngModel)]="tienda.pago" name="pagos">
                 <ion-select-option [value]="pago.codigo" 
                   *ngFor="let pago of pagos"  >
                   {{pago.name}}
@@ -67,8 +64,7 @@
             </ion-item>
             <ion-item>
               <ion-label>Metodo de Entrega</ion-label>
-              <ion-select placeholder="Select One" multiple [(ngModel)]="tienda.entrega" name="entregas">
-                <ion-select-option value="0" >Todas</ion-select-option>
+              <ion-select placeholder="Selecciona..." multiple [(ngModel)]="tienda.entrega" name="entregas">
                 <ion-select-option [value]="entrega.codigo" 
                   *ngFor="let entrega of entregas"  >
                   {{entrega.name}}
@@ -97,7 +93,8 @@
       </ion-row>
       <ion-row justify-content-center>
         <ion-col>
-          <ion-button type="submit" color="primary" expand="block">Guardar</ion-button>
+          <ion-button type="submit" color="primary" expand="full" 
+            [disabled]="formTienda.invalid">Guardar</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
