@@ -40,18 +40,28 @@
         "icon": ""
     },
     {
-        "codigo": "9",
-        "nombre": "Mascotas",
-        "icon": ""
-    },
-    {
         "codigo": "10",
         "nombre": "Gas",
         "icon": ""
     },
     {
+        "codigo": "12",
+        "nombre": "Lácteos y huevos",
+        "icon": ""
+    },
+    {
+        "codigo": "13",
+        "nombre": "Quesos y fiambres",
+        "icon": ""
+    },
+    {
         "codigo": "11",
         "nombre": "Supermercado",
+        "icon": ""
+    },
+    {
+        "codigo": "9",
+        "nombre": "Mascotas",
         "icon": ""
     }
 ]

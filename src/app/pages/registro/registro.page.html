@@ -19,6 +19,11 @@
               <ion-label position="floating">Descripción (Ingrese que vende, monto minimo, costo de delivery, etc)</ion-label>
               <ion-textarea maxlength="200" [(ngModel)]="tienda.descripcion" name="descripcion" ></ion-textarea>
             </ion-item>
+            <ion-item lines="full">
+              <ion-label position="floating">Dirección</ion-label>
+              <!-- <ion-input type="text" ngModel #name="ngModel" name="name" ></ion-input> -->
+              <ion-input type="text" [(ngModel)]="tienda.direccion" name="direccion"></ion-input>
+            </ion-item>
             <ion-item>
               <ion-label>Categorias</ion-label>
               <ion-select placeholder="Selecciona..." multiple [(ngModel)]="tienda.categorias" name="categorias"  >

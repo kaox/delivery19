@@ -63,9 +63,6 @@ export class RegistroPage implements OnInit {
     this.distritoService.getDistritos().subscribe( resp => {
       this.distritos.push( ...resp);
     });
-    this.categoriaService.getCategorias().subscribe( resp => {
-      this.categorias.push( ...resp);
-    });
     this.pagoService.getPagos().subscribe( resp => {
       this.pagos.push( ...resp);
     });

@@ -1,6 +1,9 @@
-<app-header titulo="Delivery-19"></app-header>
+<app-header titulo="Recojo en Tienda"></app-header>
 
 <ion-content>
+  <ion-text color="warning" class="ion-text-center">
+    <h6>Evite colas o salir de casa  y coordine sus pedidos con las tiendas para delivery o recojo en tienda</h6>
+  </ion-text>
   <ion-grid fixed>
     <ion-row>
       <ion-col size="12" size-lg="6" size-md="6" size-sm="6" size-xs="12" >
@@ -76,9 +79,10 @@
                 <ion-item>
                   <ion-label>
                     <h2>Contacto</h2>
-                    <p *ngIf="tienda.celular"><ion-icon name="logo-whatsapp"></ion-icon> {{ tienda.celular }}</p>
-                    <p *ngIf="tienda.website"><ion-icon name="home-outline"></ion-icon> {{ tienda.website }}</p>
-                    <p *ngIf="tienda.facebook"><ion-icon name="logo-facebook"></ion-icon> {{ tienda.facebook }}</p>
+                    <p *ngIf="tienda.telefono"><ion-icon name="call-outline"></ion-icon> <a *ngIf="tienda.telefono.substr(0, 1) === 9" href="https://wa.me/51{{tienda.telefono}}" > {{ tienda.telefono }}</a><a *ngIf="tienda.telefono.substr(0, 1) !== 9" href="tel:{{tienda.telefono}}" > {{ tienda.telefono }}</a></p>
+                    <p *ngIf="tienda.celular"><ion-icon name="logo-whatsapp"></ion-icon> <a href="https://wa.me/51{{tienda.celular}}" target="_blank"> {{ tienda.celular }}</a></p>
+                    <p *ngIf="tienda.website"><ion-icon name="home-outline"></ion-icon> <a href="{{tienda.website}}" target="_blank"> {{ tienda.website }}</a></p>
+                    <p *ngIf="tienda.facebook"><ion-icon name="logo-facebook"></ion-icon> <a href="{{ tienda.facebook }}" target="_blank"> {{ tienda.facebook }}</a></p>
                   </ion-label>
                 </ion-item>
               </ion-list>
