@@ -85,6 +85,10 @@
                     <p *ngIf="tienda.facebook"><ion-icon name="logo-facebook"></ion-icon> <a href="{{ tienda.facebook }}" target="_blank"> {{ tienda.facebook }}</a></p>
                   </ion-label>
                 </ion-item>
+                <ion-item>
+                  <ion-button *ngIf="tienda.celular" fill="solid" color="success"><ion-icon name="logo-whatsapp"></ion-icon> <a href="https://wa.me/51{{tienda.celular}}" target="_blank"> Contactalo</a></ion-button>
+                  <ion-button *ngIf="tienda.latitud" fill="solid"><ion-icon name="navigate-outline"></ion-icon> <a href="https://maps.google.com/?q={{tienda.latitud}},{{tienda.longitud}}" target="_blank"> Como llego</a></ion-button>
+                </ion-item>
               </ion-list>
             </ion-card-content>
           </ion-card-header>
