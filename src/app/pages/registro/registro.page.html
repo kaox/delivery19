@@ -21,9 +21,25 @@
             </ion-item>
             <ion-item lines="full">
               <ion-label position="floating">Dirección</ion-label>
-              <!-- <ion-input type="text" ngModel #name="ngModel" name="name" ></ion-input> -->
               <ion-input type="text" [(ngModel)]="tienda.direccion" name="direccion"></ion-input>
             </ion-item>
+            <ion-item linus="full">
+              <ion-label position="floating">Ubique su tienda (Use el marcador)</ion-label>
+              <ion-input type="hidden" [(ngModel)]="tienda.latitud" name="latitud" [value]="latitude"></ion-input>
+              <ion-input type="hidden" [(ngModel)]="tienda.longitud" name="longitud" [value]="longitude"></ion-input>
+              <ion-input type="hidden" [(ngModel)]="tienda.address" name="address" [value]="address"></ion-input>
+            </ion-item>
+              <agm-map 
+              [latitude]="latitude" 
+              [longitude]="longitude" 
+              [zoom]="zoom" >
+                <agm-marker 
+                [latitude]="latitude" 
+                [longitude]="longitude"
+                [markerDraggable]="true"
+                (dragEnd)="markerDragEnd($event)">
+                </agm-marker>
+              </agm-map>
             <ion-item>
               <ion-label>Categorias</ion-label>
               <ion-select placeholder="Selecciona..." multiple [(ngModel)]="tienda.categorias" name="categorias"  >

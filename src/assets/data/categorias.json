@@ -63,5 +63,16 @@
         "codigo": "9",
         "nombre": "Mascotas",
         "icon": ""
+    },
+    {
+        "codigo": "14",
+        "nombre": "Bebidas y Cervezas",
+        "icon": ""
+    },
+    {
+        "codigo": "15",
+        "nombre": "Restaurantes",
+        "icon": ""
     }
+
 ]

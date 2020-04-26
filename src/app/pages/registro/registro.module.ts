@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -16,7 +17,11 @@ import { ComponentsModule } from 'src/app/components/components.module';
     IonicModule,
     RegistroPageRoutingModule,
     ComponentsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBkcdJxvi1DsyDjzsZgCIt3OoxVLNGHXME',
+      libraries: ['places','visualization','geometry']
+    })
   ],
   declarations: [RegistroPage]
 })

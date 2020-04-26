@@ -13,6 +13,7 @@ export interface Tienda{
     entregas: string[];
     latitud: string;
     longitud: string;
+    direccion_gmap: string;
     nombre_contacto: string;
     correo: string;
     estado: string;
@@ -32,6 +33,7 @@ export interface TiendaAdmin{
     entregas: string[];
     latitud: string;
     longitud: string;
+    address: string;
     nombre_contacto: string;
     correo: string;
 }

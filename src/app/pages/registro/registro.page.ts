@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
+import { MapsAPILoader, MouseEvent } from '@agm/core';
 
 import { Categorias } from 'src/app/interfaces/categorias';
 import { Distritos } from 'src/app/interfaces/distritos';
@@ -41,17 +42,28 @@ export class RegistroPage implements OnInit {
     entregas: [''],
     latitud: '',
     longitud: '',
+    address: '',
     nombre_contacto: '',
     correo: ''
   };
 
+  address: string;
+  latitude: number = -12.0558302;
+  longitude: number = -77.0414725;
+  zoom: number = 13;
+  private geoCoder;
+
+  // @ViewChild('search', any)
+  // public searchElementRef: ElementRef;
 
   constructor(private categoriaService: CategoriaService, 
     private distritoService: DistritoService,
     private tiendaService: TiendaService,
     private pagoService: PagoService,
     private entregaService: EntregaService,
-    private http: HttpClient
+    private http: HttpClient,
+    private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone
     ) {
   }
 
@@ -69,6 +81,30 @@ export class RegistroPage implements OnInit {
     this.entregaService.getEntregas().subscribe( resp => {
       this.entregas.push( ...resp);
     });
+    
+    //load Places Autocomplete
+    this.mapsAPILoader.load().then(() => {
+      this.setCurrentLocation();
+      this.geoCoder = new google.maps.Geocoder;
+ 
+      // let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
+      // autocomplete.addListener("place_changed", () => {
+      //   this.ngZone.run(() => {
+      //     //get the place result
+      //     let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+ 
+      //     //verify result
+      //     if (place.geometry === undefined || place.geometry === null) {
+      //       return;
+      //     }
+ 
+      //     //set latitude, longitude and zoom
+      //     this.latitude = place.geometry.location.lat();
+      //     this.longitude = place.geometry.location.lng();
+      //     this.zoom = 12;
+      //   });
+      // });
+    });
   }
 
   resetForm(){
@@ -77,13 +113,49 @@ export class RegistroPage implements OnInit {
 
   register(formTienda: NgForm){
     let tienda: TiendaAdmin = formTienda.value;
-    console.log(formTienda.value);
-    console.log(formTienda.valid);
     //console.log(this.tiendaForm.value)
     if(formTienda.valid) {
       this.tiendaService.registro(formTienda.value);
       formTienda.resetForm();
     }
+  }
+
+  // Get Current Location Coordinates
+  private setCurrentLocation() {
+    
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+        this.zoom = 11;
+        this.getAddress(this.latitude, this.longitude);
+      });
+    }
+  }
+
+  markerDragEnd($event: MouseEvent) {
+    console.log($event);
+    this.latitude = $event.coords.lat;
+    this.longitude = $event.coords.lng;
+    this.getAddress(this.latitude, this.longitude);
+  }
+
+  getAddress(latitude, longitude) {
+    this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
+      console.log(results);
+      console.log(status);
+      if (status === 'OK') {
+        if (results[0]) {
+          this.zoom = 13;
+          this.address = results[0].formatted_address;
+        } else {
+          console.log('No results found');
+        }
+      } else {
+        console.log('Geocoder failed due to: ' + status);
+      }
+ 
+    });
   }
 
 }
