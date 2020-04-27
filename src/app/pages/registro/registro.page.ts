@@ -26,6 +26,7 @@ export class RegistroPage implements OnInit {
   distritos: Distritos[] = [];
   pagos: Pago[] = [];
   entregas: Entrega[] = [];
+  message: String;
   // registerTienda: Tienda;
   tienda: TiendaAdmin = {
     name: '',
@@ -117,6 +118,7 @@ export class RegistroPage implements OnInit {
     if(formTienda.valid) {
       this.tiendaService.registro(formTienda.value);
       formTienda.resetForm();
+      this.message = "Gracias por registrarse, en breve un administrador aprobará su registro."
     }
   }
 

@@ -1,7 +1,10 @@
-<app-header titulo="Agregar Delivery"></app-header>
+<app-header titulo="Registrar Tienda"></app-header>
 
 <ion-content>
 <div class=form-container>
+  <ion-text *ngIf="message" color="warning" class="ion-text-center">
+    <h6>{{message}}</h6>
+  </ion-text>
   <form #formTienda="ngForm" (ngSubmit)="register(formTienda);">
     <ion-grid>
       <ion-row color="primary" justify-content-center>

@@ -1,17 +1,17 @@
 [
     {
         "icon": "bicycle-outline",
-        "name": "Inicio",
+        "name": "Tiendas",
         "redirectTo": "/inicio"
     },
     {
         "icon": "add-circle-outline",
-        "name": "Agrega negocio",
+        "name": "Registrar tienda",
         "redirectTo": "/registro"
     },
     {
         "icon": "alert-circle-outline",
-        "name": "Nosotros",
+        "name": "¿Quién soy?",
         "redirectTo": "/nosotros"
     }
 ]

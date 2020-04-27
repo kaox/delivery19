@@ -428,5 +428,66 @@
     "numero_hijos_ubigeo": "0",
     "nivel_ubigeo": "3",
     "id_padre_ubigeo": "3927"
+  },
+  {
+    "id_ubigeo": "3287",
+    "nombre_ubigeo": "Bellavista",
+    "codigo_ubigeo": "02",
+    "etiqueta_ubigeo": "Bellavista, Callao",
+    "buscador_ubigeo": "bellavista callao",
+    "numero_hijos_ubigeo": "0",
+    "nivel_ubigeo": "3",
+    "id_padre_ubigeo": "3285"
+  },
+  {
+    "id_ubigeo": "3286",
+    "nombre_ubigeo": "Callao",
+    "codigo_ubigeo": "01",
+    "etiqueta_ubigeo": "Callao, Callao",
+    "buscador_ubigeo": "callao callao",
+    "numero_hijos_ubigeo": "0",
+    "nivel_ubigeo": "3",
+    "id_padre_ubigeo": "3285"
+  },
+  {
+    "id_ubigeo": "3288",
+    "nombre_ubigeo": "Carmen de la Legua Reynoso",
+    "codigo_ubigeo": "03",
+    "etiqueta_ubigeo": "Carmen de la Legua Reynoso, Callao",
+    "buscador_ubigeo": "carmen de la legua reynoso callao",
+    "numero_hijos_ubigeo": "0",
+    "nivel_ubigeo": "3",
+    "id_padre_ubigeo": "3285"
+  },
+  {
+    "id_ubigeo": "3289",
+    "nombre_ubigeo": "La Perla",
+    "codigo_ubigeo": "04",
+    "etiqueta_ubigeo": "La Perla, Callao",
+    "buscador_ubigeo": "la perla callao",
+    "numero_hijos_ubigeo": "0",
+    "nivel_ubigeo": "3",
+    "id_padre_ubigeo": "3285"
+  },
+  {
+    "id_ubigeo": "3290",
+    "nombre_ubigeo": "La Punta",
+    "codigo_ubigeo": "05",
+    "etiqueta_ubigeo": "La Punta, Callao",
+    "buscador_ubigeo": "la punta callao",
+    "numero_hijos_ubigeo": "0",
+    "nivel_ubigeo": "3",
+    "id_padre_ubigeo": "3285"
+  },
+  {
+    "id_ubigeo": "3291",
+    "nombre_ubigeo": "Ventanilla",
+    "codigo_ubigeo": "06",
+    "etiqueta_ubigeo": "Ventanilla, Callao",
+    "buscador_ubigeo": "ventanilla callao",
+    "numero_hijos_ubigeo": "0",
+    "nivel_ubigeo": "3",
+    "id_padre_ubigeo": "3285"
   }
+  
 ]
