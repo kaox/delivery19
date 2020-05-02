@@ -5,7 +5,7 @@ import { MapsAPILoader, MouseEvent } from '@agm/core';
 
 import { Categorias } from 'src/app/interfaces/categorias';
 import { Distritos } from 'src/app/interfaces/distritos';
-import { TiendaAdmin } from 'src/app/interfaces/tiendas';
+import { Tienda } from 'src/app/interfaces/tiendas';
 import { CategoriaService } from 'src/app/services/categoria.service';
 import { DistritoService } from 'src/app/services/distrito.service';
 import { TiendaService } from 'src/app/services/tienda.service';
@@ -28,7 +28,7 @@ export class RegistroPage implements OnInit {
   entregas: Entrega[] = [];
   message: String;
   // registerTienda: Tienda;
-  tienda: TiendaAdmin = {
+  tienda: Tienda = {
     name: '',
     descripcion: '',
     telefono: '',
@@ -45,7 +45,8 @@ export class RegistroPage implements OnInit {
     longitud: '',
     address: '',
     nombre_contacto: '',
-    correo: ''
+    correo: '',
+    estado: false
   };
 
   address: string;
@@ -113,7 +114,8 @@ export class RegistroPage implements OnInit {
   }
 
   register(formTienda: NgForm){
-    let tienda: TiendaAdmin = formTienda.value;
+    formTienda.controls["estado"].setValue("false");
+    let tienda: Tienda = formTienda.value;
     //console.log(this.tiendaForm.value)
     if(formTienda.valid) {
       this.tiendaService.registro(formTienda.value);

@@ -19,7 +19,7 @@ export class TiendaService {
   registro( tienda: TiendaAdmin){
     return new Promise( resolve => {
       //this.http.post('http://localhost:3002/tienda_admin', tienda).subscribe( resp => {
-      this.http.post('https://recojoentienda-ws.herokuapp.com/tienda_admin', tienda).subscribe( resp => {
+      this.http.post('https://recojoentienda-ws.herokuapp.com/tienda', tienda).subscribe( resp => {
         if(resp ['ok']){
           resolve(true);
         }else{

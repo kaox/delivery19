@@ -6,6 +6,7 @@
     <h6>{{message}}</h6>
   </ion-text>
   <form #formTienda="ngForm" (ngSubmit)="register(formTienda);">
+    <ion-input type="hidden" [(ngModel)]="tienda.estado" name="estado"></ion-input>
     <ion-grid>
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
