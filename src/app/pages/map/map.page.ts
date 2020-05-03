@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 // import { MapsAPILoader, MouseEvent, GoogleMapsAPIWrapper } from '@agm/core';
-import { GoogleMapsModule } from '@angular/google-maps'
+// import { GoogleMapsModule } from '@angular/google-maps'
 import { Categorias } from 'src/app/interfaces/categorias';
 import { Distritos } from 'src/app/interfaces/distritos';
 import { Tienda } from 'src/app/interfaces/tiendas';
@@ -30,10 +30,11 @@ export class MapPage implements OnInit {
 
   constructor(private categoriaService: CategoriaService, 
     private tiendaService: TiendaService,
-    private distritoService: DistritoService,
+    private distritoService: DistritoService
     // private mapsAPILoader: MapsAPILoader,
     // private gMaps: GoogleMapsAPIWrapper,
-    private gmapsmodule: GoogleMapsModule) { }
+    // private gmapsmodule: GoogleMapsModule
+    ) { }
 
   ngOnInit() {
     this.categoriaService.getCategorias().subscribe( resp => {

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 // import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { IonicModule } from '@ionic/angular';
-import { GoogleMapsModule } from '@angular/google-maps'
+// import { GoogleMapsModule } from '@angular/google-maps'
 
 
 // import { MapPageRoutingModule } from './map-routing.module';
@@ -22,8 +22,8 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
     // MapPageRoutingModule,
     ComponentsModule,
     IonicSelectableModule,
-    PipesModule,
-    GoogleMapsModule
+    PipesModule
+    // GoogleMapsModule
     // AgmCoreModule.forRoot({
     //   apiKey: 'AIzaSyBkcdJxvi1DsyDjzsZgCIt3OoxVLNGHXME',
     //   libraries: ['places','visualization','geometry']
