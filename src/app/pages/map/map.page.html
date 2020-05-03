@@ -1,0 +1,61 @@
+<app-header titulo="Tiendas"></app-header>
+
+<ion-content>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script> -->
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12" size-lg="6" size-md="6" size-sm="6" size-xs="12" >
+        <ion-item>
+          <ion-label>Estoy en...</ion-label>
+          <ionic-selectable 
+            [(ngModel)]="selec_distrito" 
+            [items]="distritos"
+            itemValueField="codigo_ubigeo"
+            itemTextField="etiqueta_ubigeo"
+            [canSearch]="true"
+            (onChange)="distritoChange($event)">
+            <ng-template ionicSelectableIconTemplate>
+              <ion-icon name="location-outline"></ion-icon>
+            </ng-template>
+          </ionic-selectable>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-lg="6" size-md="6" size-sm="6" size-xs="12" >
+        <ion-item>
+          <ion-label>estoy buscando...</ion-label>
+          <ion-select placeholder="Select One" interface="popover" (ionChange)="categoriaChange($event)">
+            <ion-select-option value="0">Todas</ion-select-option>
+            <ion-select-option value="{{categoria.codigo}}" 
+              *ngFor="let categoria of categorias" >
+              {{categoria.nombre}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12" size-lg="12" size-md="12" size-sm="12" size-xs="12" >
+        <!-- <google-map></google-map> -->
+
+        <!-- <agm-map 
+          [latitude]="latitude" 
+          [longitude]="longitude" 
+          [zoom]="zoom"
+          [usePanning]='true' >
+            <agm-marker 
+              *ngFor="let tienda of tiendas | filtro: selected_categoria: selected_distrito"
+              [latitude]="tienda.latitud" 
+              [longitude]="tienda.longitud"
+              (markerClick)='markerClicked(tienda)'>
+            </agm-marker>
+        </agm-map> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- <p *ngFor="let tienda of tiendas | filtro: selected_categoria: selected_distrito">
+    Lat: {{ tienda.latitud }} Lng: {{ tienda.longitud }}
+  </p> -->
+</ion-content>
