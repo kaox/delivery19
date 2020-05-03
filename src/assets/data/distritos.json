@@ -127,7 +127,9 @@
     "buscador_ubigeo": "jesus maria lima",
     "numero_hijos_ubigeo": "0",
     "nivel_ubigeo": "3",
-    "id_padre_ubigeo": "3927"
+    "id_padre_ubigeo": "3927",
+    "latitud": "-12.082524",
+    "longitud": "-77.05065"
   },
   {
     "id_ubigeo": "3941",
