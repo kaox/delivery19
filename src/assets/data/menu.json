@@ -1,0 +1,17 @@
+[
+    {
+        "icon": "bicycle-outline",
+        "name": "Tiendas",
+        "redirectTo": "/inicio"
+    },
+    {
+        "icon": "add-circle-outline",
+        "name": "Registrar tienda",
+        "redirectTo": "/registro"
+    },
+    {
+        "icon": "alert-circle-outline",
+        "name": "¿Quién soy?",
+        "redirectTo": "/nosotros"
+    }
+]
