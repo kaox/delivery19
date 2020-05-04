@@ -29,6 +29,7 @@ export class RegistroPage implements OnInit {
   message: String;
   // registerTienda: Tienda;
   tienda: Tienda = {
+    _id: null,
     name: '',
     descripcion: '',
     telefono: '',

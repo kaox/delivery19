@@ -22,6 +22,12 @@ export class TiendaService {
     //return this.http.get<Tienda[]>('/assets/data/tiendas.json')
   }
 
+  getTiendaId(id){
+    //return this.http.get('http://localhost:3002/tienda');
+    return this.http.get<Tienda>('https://recojoentienda-ws.herokuapp.com/tienda/'+id);
+    //return this.http.get<Tienda[]>('/assets/data/tiendas.json')
+  }
+
   registro( tienda: Tienda){
     return new Promise( resolve => {
       //this.http.post('http://localhost:3002/tienda_admin', tienda).subscribe( resp => {

@@ -48,7 +48,7 @@
               </ion-button>
             </div> -->
             <ion-card-title>
-              {{ tienda.name }}
+              <a [routerLink]="['/tienda',tienda._id]" >{{ tienda.name }}</a>
             </ion-card-title>
             <ion-card-content>
               <p>{{ tienda.descripcion }}</p>

@@ -1,4 +1,5 @@
 export interface Tienda{
+    _id: Number;
     name: string;
     descripcion: string;
     telefono: string;
