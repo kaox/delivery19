@@ -1,0 +1,83 @@
+<app-header titulo="Tiendas"></app-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12" size-lg="6" size-md="6" size-sm="6" size-xs="12" >
+        <ion-item>
+          <ion-label>Estoy en...</ion-label>
+          <ionic-selectable 
+            [(ngModel)]="selec_distrito" 
+            [items]="distritos"
+            itemValueField="codigo_ubigeo"
+            itemTextField="etiqueta_ubigeo"
+            [canSearch]="true"
+            (onChange)="distritoChange($event)">
+            <ng-template ionicSelectableIconTemplate>
+              <ion-icon name="location-outline"></ion-icon>
+            </ng-template>
+          </ionic-selectable>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" size-lg="6" size-md="6" size-sm="6" size-xs="12" >
+        <ion-item>
+          <ion-label>estoy buscando...</ion-label>
+          <ion-select placeholder="Select One" interface="popover" (ionChange)="categoriaChange($event)">
+            <ion-select-option value="0">Todas</ion-select-option>
+            <ion-select-option value="{{categoria.codigo}}" 
+              *ngFor="let categoria of categorias" >
+              {{categoria.nombre}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12" size-lg="12" size-md="12" size-sm="12" size-xs="12" >
+        <google-map
+          height="450px"
+          width="100%"
+          [center]="center"
+          [zoom]="zoom"
+          [options]="options"
+        >
+          <map-marker
+            #markerElem
+            *ngFor="let marker of markers"
+            [position]="marker.position"
+            [label]="marker.label"
+            [title]="marker.title"
+            [options]="marker.options"
+            (mapClick)="openInfo(markerElem, marker)"
+          >
+          </map-marker>
+          <map-info-window >
+            <ion-text color="primary">
+              <h3>{{getContent(infoContent,0)}}</h3>
+            </ion-text>
+            <ion-list lines="none">
+              <ion-item>
+                <ion-label>
+                  <h2>Dirección</h2>
+                  <p>
+                    {{getContent(infoContent,3)}}
+                  </p>
+                </ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-button *ngIf="getContent(infoContent,2)" fill="solid" color="success"><ion-icon name="logo-whatsapp"></ion-icon> <a href="https://wa.me/51{{getContent(infoContent,2)}}" target="_blank"> Contactalo</a></ion-button>
+              </ion-item>
+            </ion-list>
+          </map-info-window>
+        </google-map>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed" routerLink="/inicio">
+    <ion-fab-button color="primary" >
+      <ion-icon name="list-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

@@ -20,19 +20,13 @@ export class InicioPage implements OnInit {
   distritos: Distritos[] = [];
   selec_distrito = null;
   selected_distrito = '';
-  selected_categoria = '';
+  selected_categoria = '0';
 
   constructor(private tiendaService: TiendaService, 
               private categoriaService: CategoriaService, 
               private distritoService: DistritoService) { }
 
   ngOnInit() {
-    this.tiendaService.getTiendas() 
-      .subscribe( resp => {
-        //console.log(resp['tiendas']);
-        this.tiendas.push( ...resp['tiendas']);
-      }
-    );
     this.categoriaService.getCategorias().subscribe( resp => {
       this.categorias.push( ...resp);
     });
@@ -43,10 +37,24 @@ export class InicioPage implements OnInit {
 
   distritoChange(event){
     this.selected_distrito = event.value.codigo_ubigeo;
+    this.tiendas = [];
+    this.tiendaService.getTiendasDistritoCategoria(this.selected_distrito,this.selected_categoria) 
+      .subscribe( resp => {
+        this.tiendas.push( ...resp['tiendas']);
+        console.log(this.tiendas)
+      }
+    );
   }
 
   categoriaChange(event){
     this.selected_categoria = event.detail.value;
+    this.tiendas = [];
+    this.tiendaService.getTiendasDistritoCategoria(this.selected_distrito,this.selected_categoria) 
+      .subscribe( resp => {
+        this.tiendas.push( ...resp['tiendas']);
+        console.log(this.tiendas)
+      }
+    );
   }
 
   openMenu(){

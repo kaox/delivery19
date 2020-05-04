@@ -46,7 +46,8 @@ export class RegistroPage implements OnInit {
     address: '',
     nombre_contacto: '',
     correo: '',
-    estado: false
+    estado: false,
+    position: ['']
   };
 
   address: string;
