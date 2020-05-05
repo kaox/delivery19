@@ -1,0 +1,66 @@
+<app-header titulo="Kaox"></app-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12" size-lg="4" size-md="4" size-sm="6" size-xs="12" 
+        *ngFor="let tienda of tiendas">
+        <ion-card>
+          <ion-card-header color="light" [routerLink]="['/tienda',tienda._id]">
+            <ion-card-title>
+              {{ tienda.name }}
+            </ion-card-title>
+          </ion-card-header>
+            <ion-card-content>
+              <p>{{ tienda.descripcion }}</p>
+              <ion-list lines="none">
+                <ion-item *ngIf="tienda.direccion">
+                  <ion-label>
+                    <h2>Dirección</h2>
+                    <p>
+                      {{tienda.direccion}}
+                    </p>
+                  </ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-label>
+                    <h2>Pago</h2>
+                    <p>
+                      <ng-template ngFor let-item [ngForOf]="tienda.pagos" let-i="index">
+                        <ng-template [ngIf]="item == 1"><ion-icon name="cash-outline"></ion-icon> Efectivo </ng-template>
+                        <ng-template [ngIf]="item == 2"><ion-icon name="card-outline"></ion-icon> Tarjeta </ng-template>
+                        <ng-template [ngIf]="item == 3"><ion-icon name="logo-google-playstore"></ion-icon> Aplicación </ng-template>
+                      </ng-template>
+                    </p>
+                  </ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-label>
+                    <h2>Entrega</h2>
+                    <p>
+                      <ng-template ngFor let-item [ngForOf]="tienda.entregas" let-i="index">
+                        <ng-template [ngIf]="item == 1"><ion-icon name="bicycle-outline"></ion-icon> Delivery </ng-template>
+                        <ng-template [ngIf]="item == 2"><ion-icon name="cart-outline"></ion-icon> Recojo en tienda </ng-template>
+                      </ng-template>
+                    </p>
+                  </ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-label>
+                    <h2>Contacto</h2>
+                    <p *ngIf="tienda.telefono"><ion-icon name="call-outline"></ion-icon> <a *ngIf="tienda.telefono.substr(0, 1) === 9" href="https://wa.me/51{{tienda.telefono}}" > {{ tienda.telefono }}</a><a *ngIf="tienda.telefono.substr(0, 1) !== 9" href="tel:{{tienda.telefono}}" > {{ tienda.telefono }}</a></p>
+                    <p *ngIf="tienda.celular"><ion-icon name="logo-whatsapp"></ion-icon> <a href="https://wa.me/51{{tienda.celular}}" target="_blank"> {{ tienda.celular }}</a></p>
+                    <p *ngIf="tienda.website"><ion-icon name="home-outline"></ion-icon> <a *ngIf="tienda.website.substr(0, 3) === 'www'" href="http://{{tienda.website}}" target="_blank"> {{ tienda.website }}</a><a *ngIf="tienda.website.substr(0, 3) !== 'www'" href="{{tienda.website}}" target="_blank"> {{ tienda.website }}</a></p>
+                    <p *ngIf="tienda.facebook"><ion-icon name="logo-facebook"></ion-icon> <a href="{{ tienda.facebook }}" target="_blank"> {{ tienda.facebook }}</a></p>
+                  </ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-button color="success">Aprobar</ion-button>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

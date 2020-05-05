@@ -15,7 +15,6 @@ export class FiltroPipe implements PipeTransform {
       });
     }else if(distrito === '' || distrito === '0'){
       return arreglo.filter( item => {
-        //console.log(item)
         return item.categorias.includes(categoria);
         // return null;
       });

@@ -41,7 +41,6 @@ export class InicioPage implements OnInit {
     this.tiendaService.getTiendasDistritoCategoria(this.selected_distrito,this.selected_categoria) 
       .subscribe( resp => {
         this.tiendas.push( ...resp['tiendas']);
-        console.log(this.tiendas)
       }
     );
   }
@@ -52,7 +51,6 @@ export class InicioPage implements OnInit {
     this.tiendaService.getTiendasDistritoCategoria(this.selected_distrito,this.selected_categoria) 
       .subscribe( resp => {
         this.tiendas.push( ...resp['tiendas']);
-        console.log(this.tiendas)
       }
     );
   }
