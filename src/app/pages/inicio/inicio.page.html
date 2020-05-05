@@ -41,15 +41,16 @@
       <ion-col size="12" size-lg="4" size-md="4" size-sm="6" size-xs="12" 
         *ngFor="let tienda of tiendas">
         <ion-card>
-          <ion-card-header>
+          <ion-card-header color="light" [routerLink]="['/tienda',tienda._id]">
             <!-- <div class="tienda-more">
               <ion-button fill="clear" (click)="openMenu()" >
                 <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
               </ion-button>
             </div> -->
             <ion-card-title>
-              <a [routerLink]="['/tienda',tienda._id]" >{{ tienda.name }}</a>
+              {{ tienda.name }}
             </ion-card-title>
+          </ion-card-header>
             <ion-card-content>
               <p>{{ tienda.descripcion }}</p>
               <ion-list lines="none">
@@ -99,13 +100,12 @@
                 </ion-item>
               </ion-list>
             </ion-card-content>
-          </ion-card-header>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
   <ion-fab horizontal="end" vertical="bottom" slot="fixed" routerLink="/map">
-    <ion-fab-button color="primary" >
+    <ion-fab-button color="dark" >
       <ion-icon name="map-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
