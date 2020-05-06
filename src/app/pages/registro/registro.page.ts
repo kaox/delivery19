@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { MapsAPILoader, MouseEvent } from '@agm/core';
 
@@ -13,6 +12,13 @@ import { PagoService } from 'src/app/services/pago.service';
 import { EntregaService } from 'src/app/services/entrega.service';
 import { Entrega } from 'src/app/interfaces/entrega';
 import { Pago } from 'src/app/interfaces/pago';
+
+
+import { AngularFirestore, AngularFirestoreCollection,  } from "@angular/fire/firestore";
+import { AngularFireStorage } from '@angular/fire/storage';
+import { LoadingController } from '@ionic/angular';
+import { Observable } from 'rxjs';
+import { v4 as uuidv4 } from 'uuid';
 
 
 @Component({
@@ -48,14 +54,23 @@ export class RegistroPage implements OnInit {
     nombre_contacto: '',
     correo: '',
     estado: false,
-    position: ['']
+    position: [''],
+    uuid: ''
   };
 
   address: string;
   latitude: number = -12.0558302;
   longitude: number = -77.0414725;
-  zoom: number = 13;
+  zoom: number = 14;
   private geoCoder;
+
+  items: Observable<any[]>;
+  newTodo: string = '';
+  itemsRef: AngularFirestoreCollection;
+  selectedFile: any;
+  selectedFiles: any[];
+  loading: HTMLIonLoadingElement;
+  uuid: string;
 
   // @ViewChild('search', any)
   // public searchElementRef: ElementRef;
@@ -65,13 +80,18 @@ export class RegistroPage implements OnInit {
     private tiendaService: TiendaService,
     private pagoService: PagoService,
     private entregaService: EntregaService,
-    private http: HttpClient,
     private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone
+    private loadingController: LoadingController,
+    private storage: AngularFireStorage,
+    private db: AngularFirestore
     ) {
+    
   }
 
   ngOnInit() {
+    this.uuid = uuidv4();
+    this.itemsRef = this.db.collection(''+this.uuid)
+    this.items = this.itemsRef.valueChanges();
 
     this.categoriaService.getCategorias().subscribe( resp => {
       this.categorias.push( ...resp);
@@ -117,6 +137,7 @@ export class RegistroPage implements OnInit {
 
   register(formTienda: NgForm){
     formTienda.controls["estado"].setValue("false");
+    formTienda.controls["uuid"].setValue(this.uuid);
     let tienda: Tienda = formTienda.value;
     //console.log(this.tiendaForm.value)
     if(formTienda.valid) {
@@ -133,7 +154,6 @@ export class RegistroPage implements OnInit {
       navigator.geolocation.getCurrentPosition((position) => {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
-        this.zoom = 11;
         this.getAddress(this.latitude, this.longitude);
       });
     }
@@ -149,7 +169,6 @@ export class RegistroPage implements OnInit {
     this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
       if (status === 'OK') {
         if (results[0]) {
-          this.zoom = 13;
           this.address = results[0].formatted_address;
         } else {
           console.log('No results found');
@@ -159,6 +178,62 @@ export class RegistroPage implements OnInit {
       }
  
     });
+  }
+
+  addTodo(){
+    this.itemsRef.add({
+      title: this.newTodo
+    })
+    .then(async resp => {
+      console.log(this.selectedFile[0].size)
+      if(this.selectedFile[0].size < 500000){
+        // this.selectedFiles.push(this.selectedFile[0])
+
+        const imageUrl = await this.uploadFile(resp.id, this.selectedFile)
+
+        this.itemsRef.doc(resp.id).update({
+          id: resp.id,
+          imageUrl: imageUrl || null
+        })
+      }else{
+        console.log('Archivo excede el tamaño permitido');
+      }
+      
+    }).catch(error => {
+      console.log(error);
+    })
+  }
+
+  async uploadFile(id, file): Promise<any> {
+    if(file && file.length) {
+      try {
+        await this.presentLoading();
+        const task = await this.storage.ref(`images/${this.uuid}/`).child(id).put(file[0])
+        this.loading.dismiss();
+        return this.storage.ref(`images/${this.uuid}/${id}`).getDownloadURL().toPromise();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingController.create({
+      message: 'Subiendo foto...'
+    });
+    return this.loading.present();
+  }
+
+  chooseFile (event) {
+    this.selectedFile = event.target.files
+  }
+
+  remove(item){
+    console.log(item);
+    if(item.imageUrl) {
+      this.storage.ref(`images/${this.uuid}/${item.id}`).delete();
+    }
+    this.itemsRef.doc(item.id).delete();
   }
 
 }

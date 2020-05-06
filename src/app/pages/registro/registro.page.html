@@ -7,6 +7,7 @@
   </ion-text>
   <form #formTienda="ngForm" (ngSubmit)="register(formTienda);">
     <ion-input type="hidden" [(ngModel)]="tienda.estado" name="estado"></ion-input>
+    <ion-input type="hidden" [(ngModel)]="tienda.uuid" name="uuid"></ion-input>
     <ion-grid>
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
@@ -96,6 +97,24 @@
                 </ion-select-option>
               </ion-select>
             </ion-item>
+            <!-- <ion-item>
+              <ion-label position="stacked">Add New</ion-label>
+              <ion-input name="todo" placeholder="todo"></ion-input>
+            </ion-item> -->
+            <ion-item>
+              <ion-label position="floating">Archivo</ion-label>
+              <ion-input type="file" name="inputFile" (change)="chooseFile($event)" required ></ion-input><ion-button (click)="addTodo()">Add</ion-button>
+            </ion-item>
+            <ion-item *ngFor="let item of items | async">
+              <ion-thumbnail slot="start" *ngIf="item.imageUrl">
+                <img [src]="item.imageUrl" alt="">
+              </ion-thumbnail>
+              <ion-label>{{ item.title }}</ion-label>
+              <ion-button slot="end" fill="clear" color="danger" (click)="remove(item)">
+                <ion-icon slot="icon-only" name="trash"></ion-icon>
+              </ion-button>
+            </ion-item>
+            
           </ion-item-group>
           <!-- <br/>
           <ion-item-group>

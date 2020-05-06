@@ -18,5 +18,6 @@ export interface Tienda{
     nombre_contacto: string;
     correo: string;
     estado: boolean;
-    position: string[]
+    position: string[],
+    uuid: string;
 }

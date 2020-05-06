@@ -31,7 +31,8 @@ export class TiendaPage implements OnInit {
     nombre_contacto: '',
     correo: '',
     estado: false,
-    position: ['']
+    position: [''],
+    uuid: ''
   };
 
   constructor(
