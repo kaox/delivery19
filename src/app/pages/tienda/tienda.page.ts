@@ -3,6 +3,10 @@ import { ActivatedRoute } from '@angular/router'
 import { TiendaService } from 'src/app/services/tienda.service';
 import { Tienda } from 'src/app/interfaces/tiendas';
 
+import { AngularFirestore, AngularFirestoreCollection,  } from "@angular/fire/firestore";
+import { AngularFireStorage } from '@angular/fire/storage';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-tienda',
   templateUrl: './tienda.page.html',
@@ -35,19 +39,34 @@ export class TiendaPage implements OnInit {
     uuid: ''
   };
 
+  items: Observable<any[]>;
+  itemsRef: AngularFirestoreCollection;
+
   constructor(
     private tiendaService: TiendaService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private storage: AngularFireStorage,
+    private db: AngularFirestore
     ) { }
 
   ngOnInit() {
+    console.log('hello')
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
     this.tiendaService.getTiendaId(this.id).subscribe(
-      res => this.tienda = res['tienda'],
+      res => {
+        this.tienda = res['tienda']
+        if(this.tienda.uuid !== undefined){
+          this.itemsRef = this.db.collection(''+this.tienda.uuid);
+          if(this.itemsRef!== undefined){
+            this.items = this.itemsRef.valueChanges();
+          }
+        }
+      },
       err => console.log('error', err)
     )
+    
     
   }
 

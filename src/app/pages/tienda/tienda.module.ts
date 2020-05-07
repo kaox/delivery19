@@ -9,13 +9,18 @@ import { TiendaPageRoutingModule } from './tienda-routing.module';
 import { TiendaPage } from './tienda.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from "@angular/fire/storage";
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     TiendaPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ],
   declarations: [TiendaPage]
 })

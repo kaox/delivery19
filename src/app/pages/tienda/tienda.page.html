@@ -12,6 +12,11 @@
         {{ tienda.name }}
       </ion-card-title>
     </ion-card-header>
+    <ion-slides pager="true" zoom="true" *ngIf="items!==undefined">
+      <ion-slide *ngFor="let item of items | async">
+        <img [src]="item.imageUrl" />
+      </ion-slide>
+    </ion-slides>
     <ion-card-content>
       <p>{{ tienda.descripcion }}</p>
       <ion-list lines="none">

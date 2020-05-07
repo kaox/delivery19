@@ -7,6 +7,9 @@ import { TiendaService } from 'src/app/services/tienda.service';
 import { CategoriaService } from 'src/app/services/categoria.service';
 import { DistritoService } from 'src/app/services/distrito.service';
 
+import { AngularFirestore, AngularFirestoreCollection,  } from "@angular/fire/firestore";
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
@@ -22,9 +25,13 @@ export class InicioPage implements OnInit {
   selected_distrito = '';
   selected_categoria = '0';
 
+  items: Observable<any[]>;
+  itemsRef: AngularFirestoreCollection;
+
   constructor(private tiendaService: TiendaService, 
               private categoriaService: CategoriaService, 
-              private distritoService: DistritoService) { }
+              private distritoService: DistritoService,
+              private db: AngularFirestore) { }
 
   ngOnInit() {
     this.categoriaService.getCategorias().subscribe( resp => {
@@ -41,6 +48,8 @@ export class InicioPage implements OnInit {
     this.tiendaService.getTiendasDistritoCategoria(this.selected_distrito,this.selected_categoria) 
       .subscribe( resp => {
         this.tiendas.push( ...resp['tiendas']);
+        // this.itemsRef = this.db.collection(''+this.uuid)
+        // this.items = this.itemsRef.valueChanges();
       }
     );
   }
