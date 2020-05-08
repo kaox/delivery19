@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { GoogleMap, MapInfoWindow, MapMarker } from "@angular/google-maps";
+import { MapInfoWindow, MapMarker } from "@angular/google-maps";
+import { LoadingController } from '@ionic/angular';
 
 import { Categorias } from 'src/app/interfaces/categorias';
 import { Distritos } from 'src/app/interfaces/distritos';
@@ -35,9 +36,12 @@ export class MapPage implements OnInit {
   infoContent = ''
   @ViewChild(MapInfoWindow, { static: false }) infoWindow: MapInfoWindow
 
+  loading: HTMLIonLoadingElement;
+
   constructor(private categoriaService: CategoriaService, 
     private tiendaService: TiendaService,
-    private distritoService: DistritoService) { }
+    private distritoService: DistritoService,
+    private loadingController: LoadingController) { }
 
   ngOnInit() {
     this.categoriaService.getCategorias().subscribe( resp => {
@@ -54,11 +58,12 @@ export class MapPage implements OnInit {
     })
   }
 
-  distritoChange(event){
+  async distritoChange(event){
     this.selected_distrito = event.value.codigo_ubigeo;
 
     // this.gMaps.setCenter({ lat: event.value.latitud, lng: event.value.longitud });
     this.tiendas = [];
+    await this.presentLoading();
     this.tiendaService.getTiendasDistritoCategoria(this.selected_distrito,this.selected_categoria) 
       .subscribe( resp => {
         this.tiendas.push( ...resp['tiendas']);
@@ -66,14 +71,16 @@ export class MapPage implements OnInit {
         for (let tienda of this.tiendas) {
           this.addMarker(tienda)
         }
+        this.loading.dismiss();
       }
     );
   }
 
-  categoriaChange(event){
+  async categoriaChange(event){
     this.selected_categoria = event.detail.value;
 
     this.tiendas = [];
+    await this.presentLoading();
     this.tiendaService.getTiendasDistritoCategoria(this.selected_distrito,this.selected_categoria) 
       .subscribe( resp => {
         this.tiendas.push( ...resp['tiendas']);
@@ -81,6 +88,7 @@ export class MapPage implements OnInit {
         for (let tienda of this.tiendas) {
           this.addMarker(tienda)
         }
+        this.loading.dismiss();
       }
     );
   }
@@ -109,6 +117,13 @@ export class MapPage implements OnInit {
   getContent(content, position){
     var text = content.split('|');
     return text[position];
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingController.create({
+      message: 'Buscando...'
+    });
+    return this.loading.present();
   }
 
 }

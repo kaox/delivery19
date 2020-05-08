@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, AlertController } from '@ionic/angular';
 import { Componente } from 'src/app/interfaces/interfaces';
 import { Tienda } from 'src/app/interfaces/tiendas';
 import { Categorias } from 'src/app/interfaces/categorias';
@@ -35,9 +35,11 @@ export class InicioPage implements OnInit {
               private categoriaService: CategoriaService, 
               private distritoService: DistritoService,
               private loadingController: LoadingController,
-              private db: AngularFirestore) { }
+              private db: AngularFirestore,
+              private alertController: AlertController) { }
 
   ngOnInit() {
+    this.presentAlert();
     this.categoriaService.getCategorias().subscribe( resp => {
       this.categorias.push( ...resp);
     });
@@ -77,6 +79,18 @@ export class InicioPage implements OnInit {
       message: 'Buscando...'
     });
     return this.loading.present();
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Quedate en casa',
+      message: '1. Ubica tu tienda mas cercana <br/>2. Coordina la entrega de tus productos por WhastApp o teléfono.<br/> 3. Recoger tus productos en tienda o delivery.',
+      buttons: ['OK'],
+    });
+  
+    await alert.present();
+    let result = await alert.onDidDismiss();
+    console.log(result);
   }
 
   openMenu(){

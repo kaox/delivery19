@@ -1,9 +1,6 @@
 <app-header titulo="Recojo en Tienda"></app-header>
 
 <ion-content>
-  <ion-text color="warning" class="ion-text-center">
-    <h6>Evite colas o salir de casa  y coordine sus pedidos con las tiendas para delivery o recojo en tienda</h6>
-  </ion-text>
   <ion-grid fixed>
     <ion-row>
       <ion-col size="12" size-lg="6" size-md="6" size-sm="6" size-xs="12" >
@@ -25,7 +22,7 @@
       <ion-col size="12" size-lg="6" size-md="6" size-sm="6" size-xs="12" >
         <ion-item>
           <ion-label>estoy buscando...</ion-label>
-          <ion-select placeholder="Select One" interface="popover" (ionChange)="categoriaChange($event)">
+          <ion-select interface="popover" (ionChange)="categoriaChange($event)">
             <ion-select-option value="0">Todas</ion-select-option>
             <ion-select-option value="{{categoria.codigo}}" 
               *ngFor="let categoria of categorias" >
