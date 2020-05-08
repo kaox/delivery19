@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadingController } from '@ionic/angular';
 import { Componente } from 'src/app/interfaces/interfaces';
 import { Tienda } from 'src/app/interfaces/tiendas';
 import { Categorias } from 'src/app/interfaces/categorias';
@@ -28,9 +29,12 @@ export class InicioPage implements OnInit {
   items: Observable<any[]>;
   itemsRef: AngularFirestoreCollection;
 
+  loading: HTMLIonLoadingElement;
+
   constructor(private tiendaService: TiendaService, 
               private categoriaService: CategoriaService, 
               private distritoService: DistritoService,
+              private loadingController: LoadingController,
               private db: AngularFirestore) { }
 
   ngOnInit() {
@@ -42,30 +46,42 @@ export class InicioPage implements OnInit {
     });
   }
 
-  distritoChange(event){
+  async distritoChange(event){
     this.selected_distrito = event.value.codigo_ubigeo;
     this.tiendas = [];
+    await this.presentLoading();
     this.tiendaService.getTiendasDistritoCategoria(this.selected_distrito,this.selected_categoria) 
-      .subscribe( resp => {
+      .subscribe( async resp => {
         this.tiendas.push( ...resp['tiendas']);
+        this.loading.dismiss();
         // this.itemsRef = this.db.collection(''+this.uuid)
         // this.items = this.itemsRef.valueChanges();
       }
     );
   }
 
-  categoriaChange(event){
+  async categoriaChange(event){
     this.selected_categoria = event.detail.value;
     this.tiendas = [];
+    await this.presentLoading();
     this.tiendaService.getTiendasDistritoCategoria(this.selected_distrito,this.selected_categoria) 
       .subscribe( resp => {
         this.tiendas.push( ...resp['tiendas']);
+        this.loading.dismiss();
       }
     );
+  }
+
+  async presentLoading() {
+    this.loading = await this.loadingController.create({
+      message: 'Buscando...'
+    });
+    return this.loading.present();
   }
 
   openMenu(){
 
   }
+  
 
 }
