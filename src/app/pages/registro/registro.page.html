@@ -9,8 +9,8 @@
     <ion-input type="hidden" [(ngModel)]="tienda.estado" name="estado"></ion-input>
     <ion-input type="hidden" [(ngModel)]="tienda.uuid" name="uuid"></ion-input>
     <ion-grid>
-      <ion-row color="primary" justify-content-center>
-        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+      <ion-row color="primary" class="ion-align-items-center">
+        <ion-col width-50 size-lg="12" size-md="12"  size-sm="12" size="12">
           <ion-item-group>
             <ion-title>
               <ion-icon name="home-outline" ></ion-icon> Datos Negocio
@@ -45,6 +45,7 @@
                 (dragEnd)="markerDragEnd($event)">
                 </agm-marker>
               </agm-map>
+
             <ion-item>
               <ion-label>Categorias</ion-label>
               <ion-select placeholder="Selecciona..." multiple [(ngModel)]="tienda.categorias" name="categorias"  >
@@ -103,7 +104,7 @@
             </ion-item> -->
             <ion-item>
               <ion-label position="floating">Archivo</ion-label>
-              <ion-input type="file" name="inputFile" (change)="chooseFile($event)" required ></ion-input><ion-button (click)="addTodo()">Add</ion-button>
+              <ion-input type="file" name="inputFile" (change)="chooseFile($event)" required ></ion-input><ion-button (click)="addTodo()">Cargar</ion-button>
             </ion-item>
             <ion-item *ngFor="let item of items | async">
               <ion-thumbnail slot="start" *ngIf="item.imageUrl">
@@ -116,11 +117,15 @@
             </ion-item>
             
           </ion-item-group>
-          <!-- <br/>
+          <br/>
           <ion-item-group>
             <ion-title>
               <ion-icon name="person-outline"></ion-icon> Datos Contacto
             </ion-title>
+            <ion-item>
+              <ion-label position="floating">Nombre contacto</ion-label>
+              <ion-input type="text" [(ngmodel)]="tienda.nombre_contacto" name="nombre_contacto" ></ion-input>
+            </ion-item>
             <ion-item>
               <ion-label position="floating">Email</ion-label>
               <ion-input type="email"
@@ -128,11 +133,7 @@
                 name="correo"
                 [(ngmodel)]="tienda.correo" required></ion-input>
             </ion-item>
-            <ion-item>
-              <ion-label position="floating">Nombre contacto</ion-label>
-              <ion-input type="text" [(ngmodel)]="tienda.nombre_contacto" name="nombre_contacto" ></ion-input>
-            </ion-item>
-          </ion-item-group> -->
+          </ion-item-group>
         </ion-col>
       </ion-row>
       <ion-row justify-content-center>

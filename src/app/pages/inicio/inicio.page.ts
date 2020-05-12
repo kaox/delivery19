@@ -8,7 +8,8 @@ import { TiendaService } from 'src/app/services/tienda.service';
 import { CategoriaService } from 'src/app/services/categoria.service';
 import { DistritoService } from 'src/app/services/distrito.service';
 
-import { AngularFirestore, AngularFirestoreCollection,  } from "@angular/fire/firestore";
+import { AngularFirestore, AngularFirestoreCollection } from "@angular/fire/firestore";
+import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -36,6 +37,7 @@ export class InicioPage implements OnInit {
               private distritoService: DistritoService,
               private loadingController: LoadingController,
               private db: AngularFirestore,
+              private storage: AngularFireStorage,
               private alertController: AlertController) { }
 
   ngOnInit() {
@@ -46,6 +48,25 @@ export class InicioPage implements OnInit {
     this.distritoService.getDistritos().subscribe( resp => {
       this.distritos.push( ...resp);
     });
+
+    // var storageRef = this.storage.ref('/');
+    // var listRef = storageRef.child('135d3d1d-49a4-4d1f-ab0c-a3015c3907d1');
+
+    // // Find all the prefixes and items.
+    // listRef.listAll().then(function(res) {
+    //   res.items.forEach(function(item) {
+    //     console.log(item)
+    //   });
+    // }).catch(function(error) {
+    //   // Uh-oh, an error occurred!
+    // });
+
+
+    // console.log(listRef);
+    // this.itemsRef = this.db.collection('135d3d1d-49a4-4d1f-ab0c-a3015c3907d1');
+    // console.log(this.itemsRef);
+    // this.items = this.itemsRef.valueChanges();
+    // console.log(this.items);
   }
 
   async distritoChange(event){
@@ -56,7 +77,7 @@ export class InicioPage implements OnInit {
       .subscribe( async resp => {
         this.tiendas.push( ...resp['tiendas']);
         this.loading.dismiss();
-        // this.itemsRef = this.db.collection(''+this.uuid)
+        
         // this.items = this.itemsRef.valueChanges();
       }
     );
@@ -96,6 +117,8 @@ export class InicioPage implements OnInit {
   openMenu(){
 
   }
+
+  
   
 
 }

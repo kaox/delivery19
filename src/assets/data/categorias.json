@@ -11,17 +11,7 @@
     },
     {
         "codigo": "3",
-        "nombre": "Carne",
-        "icon": ""
-    },
-    {
-        "codigo": "4",
-        "nombre": "Pollo",
-        "icon": ""
-    },
-    {
-        "codigo": "5",
-        "nombre": "Pescado",
+        "nombre": "Carnes, Pollo y Pescado",
         "icon": ""
     },
     {
@@ -30,28 +20,13 @@
         "icon": ""
     },
     {
-        "codigo": "7",
-        "nombre": "Farmacia",
-        "icon": ""
-    },
-    {
         "codigo": "8",
         "nombre": "Higiene y limpieza",
         "icon": ""
     },
     {
-        "codigo": "10",
-        "nombre": "Gas",
-        "icon": ""
-    },
-    {
         "codigo": "12",
-        "nombre": "Lácteos y huevos",
-        "icon": ""
-    },
-    {
-        "codigo": "13",
-        "nombre": "Quesos y fiambres",
+        "nombre": "Lácteos, huevos, quesos y fiambres",
         "icon": ""
     },
     {
@@ -66,13 +41,74 @@
     },
     {
         "codigo": "14",
-        "nombre": "Bebidas y Cervezas",
+        "nombre": "Vinos, licores y Cervezas",
         "icon": ""
     },
     {
         "codigo": "15",
         "nombre": "Restaurantes",
-        "icon": ""
+        "icon": "",
+        "subcategorias": [
+            {
+                "codigo": "1",
+                "nombre": "Ceviches y Mariscos"
+            },
+            {
+                "codigo": "2",
+                "nombre": "Criollo"
+            },
+            {
+                "codigo": "3",
+                "nombre": "Chifa"
+            },
+            {
+                "codigo": "4",
+                "nombre": "Veggies"
+            },
+            {
+                "codigo": "5",
+                "nombre": "Sanguches y Hamburguesas"
+            },
+            {
+                "codigo": "6",
+                "nombre": "Pastas"
+            },
+            {
+                "codigo": "7",
+                "nombre": "Japonesa"
+            }
+        ]
+    },
+    {
+        "codigo": "15",
+        "nombre": "Servicios",
+        "icon": "",
+        "subcategorias": [
+            {
+                "codigo": "1",
+                "nombre": "Carpinteria"
+            },
+            {
+                "codigo": "2",
+                "nombre": "Electricista"
+            },
+            {
+                "codigo": "3",
+                "nombre": "Pintura"
+            },
+            {
+                "codigo": "4",
+                "nombre": "Gasfiteria"
+            },
+            {
+                "codigo": "5",
+                "nombre": "Albañileria"
+            },
+            {
+                "codigo": "6",
+                "nombre": "Peluqueria"
+            }
+        ]
     }
 
 ]

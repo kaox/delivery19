@@ -22,7 +22,7 @@
       <ion-col size="12" size-lg="6" size-md="6" size-sm="6" size-xs="12" >
         <ion-item>
           <ion-label>estoy buscando...</ion-label>
-          <ion-select placeholder="Select One" interface="popover" (ionChange)="categoriaChange($event)">
+          <ion-select interface="popover" (ionChange)="categoriaChange($event)">
             <ion-select-option value="0">Todas</ion-select-option>
             <ion-select-option value="{{categoria.codigo}}" 
               *ngFor="let categoria of categorias" >

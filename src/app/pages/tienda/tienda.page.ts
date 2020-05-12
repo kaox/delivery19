@@ -66,8 +66,6 @@ export class TiendaPage implements OnInit {
       },
       err => console.log('error', err)
     )
-    
-    
   }
 
 }

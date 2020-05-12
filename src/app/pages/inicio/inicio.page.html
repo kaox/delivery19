@@ -48,15 +48,9 @@
               {{ tienda.name }} <a><ion-icon name="arrow-forward-outline" item-right></ion-icon></a>
             </ion-card-title>
           </ion-card-header>
-          <!-- <ion-slides pager="true" zoom="true">
-            <ion-slide>
-              <img src="https://www.viajejet.com/wp-content/viajes/Lago-Moraine-Parque-Nacional-Banff-Alberta-Canada-1440x810.jpg" alt="ion">
-            </ion-slide>
-            <ion-slide>
-              <img src="https://aws.traveler.es/prod/designs/v1/assets/1000x667/21250.jpg" alt="ion">
-            </ion-slide>
-            <ion-slide>
-              <img src="https://scontent.flim1-2.fna.fbcdn.net/v/t1.0-9/69165545_2410504915828811_8938245895560888320_o.jpg?_nc_cat=102&_nc_sid=110474&_nc_ohc=jcB-72qcunsAX-0R_By&_nc_ht=scontent.flim1-2.fna&oh=0706635ac1f2b76e965f265372b5fe21&oe=5ED5F17B" alt="ion">
+          <!-- <ion-slides pager="true" zoom="true" *ngIf="items!==undefined">
+            <ion-slide *ngFor="let item of items | async">
+              <img [src]="item.imageUrl" />
             </ion-slide>
           </ion-slides> -->
             <ion-card-content>
@@ -103,8 +97,8 @@
                   </ion-label>
                 </ion-item>
                 <ion-item *ngIf="tienda.celular || tienda.latitud">
-                  <ion-button *ngIf="tienda.celular" fill="solid" color="success" href="https://wa.me/51{{tienda.celular}}" target="_blank" ><ion-icon name="logo-whatsapp"></ion-icon> Contactalo</ion-button>
-                  <ion-button *ngIf="tienda.latitud" fill="solid" href="https://maps.google.com/?q={{tienda.latitud}},{{tienda.longitud}}" target="_blank"><ion-icon name="navigate-outline"></ion-icon> Como llego</ion-button>
+                  <ion-button *ngIf="tienda.celular" fill="solid" color="success" href="https://wa.me/51{{tienda.celular}}" target="_blank" ><ion-icon name="logo-whatsapp"></ion-icon> Escribir</ion-button>
+                  <ion-button *ngIf="tienda.latitud" fill="solid" href="https://maps.google.com/?q={{tienda.latitud}},{{tienda.longitud}}" target="_blank"><ion-icon name="navigate-outline"></ion-icon> Ubicar</ion-button>
                 </ion-item>
               </ion-list>
             </ion-card-content>
