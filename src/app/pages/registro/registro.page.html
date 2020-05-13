@@ -25,8 +25,10 @@
               <ion-textarea maxlength="200" [(ngModel)]="tienda.descripcion" name="descripcion" ></ion-textarea>
             </ion-item>
             <ion-item lines="full">
-              <ion-label position="floating">Dirección</ion-label>
-              <ion-input type="text" [(ngModel)]="tienda.direccion" name="direccion"></ion-input>
+              <ion-label position="stacked">Dirección</ion-label>
+              <!-- <ion-input type="text" [(ngModel)]="tienda.direccion" name="direccion"></ion-input> -->
+              <br/>
+              <input type="text" [(ngModel)]="tienda.direccion" name="direccion" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Ingrese la dirección" autocorrect="off" autocapitalize="off" spellcheck="off" #search [value]="address" />
             </ion-item>
             <ion-item linus="full">
               <ion-label position="floating">Ubique su tienda (Use el marcador)</ion-label>

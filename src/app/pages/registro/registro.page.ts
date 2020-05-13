@@ -20,7 +20,6 @@ import { LoadingController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 
-
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.page.html',
@@ -72,8 +71,8 @@ export class RegistroPage implements OnInit {
   loading: HTMLIonLoadingElement;
   uuid: string;
 
-  // @ViewChild('search', any)
-  // public searchElementRef: ElementRef;
+  @ViewChild('search')
+  public searchElementRef: ElementRef;
 
   constructor(private categoriaService: CategoriaService, 
     private distritoService: DistritoService,
@@ -83,7 +82,8 @@ export class RegistroPage implements OnInit {
     private mapsAPILoader: MapsAPILoader,
     private loadingController: LoadingController,
     private storage: AngularFireStorage,
-    private db: AngularFirestore
+    private db: AngularFirestore,
+    private ngZone: NgZone
     ) {
     
   }
@@ -111,23 +111,49 @@ export class RegistroPage implements OnInit {
       this.setCurrentLocation();
       this.geoCoder = new google.maps.Geocoder;
  
-      // let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
-      // autocomplete.addListener("place_changed", () => {
-      //   this.ngZone.run(() => {
-      //     //get the place result
-      //     let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+        types: ['address'],
+        //types: ['(cities)'],
+        componentRestrictions: {country: "pe"}
+      });
+      autocomplete.addListener("place_changed", () => {
+        this.ngZone.run(() => {
+          //get the place result
+          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
  
-      //     //verify result
-      //     if (place.geometry === undefined || place.geometry === null) {
-      //       return;
-      //     }
+          //verify result
+          if (place.geometry === undefined || place.geometry === null) {
+            return;
+          }
  
-      //     //set latitude, longitude and zoom
-      //     this.latitude = place.geometry.location.lat();
-      //     this.longitude = place.geometry.location.lng();
-      //     this.zoom = 12;
-      //   });
-      // });
+          //set latitude, longitude and zoom
+          this.latitude = place.geometry.location.lat();
+          this.longitude = place.geometry.location.lng();
+          this.address = place.formatted_address;
+          console.log(place.address_components);
+          for (let component of place.address_components) {
+            
+            if (component.types[0] == 'locality') {
+              //distrito
+              console.log(component['long_name']);
+            }else if(component.types[0] == 'administrative_area_level_2'){
+              //provincia
+              console.log(component['long_name']);
+            }else if(component.types[0] == 'administrative_area_level_1'){
+              //departamento
+              console.log(component['long_name']);
+            }
+          }
+        
+
+          // for(var i = 0; i < place.address_components.length; i++){
+          //   if()
+          //   var addressType = place.address_components[i].types[0];
+          //   console.log(place.address_components[i])
+          // }
+          
+        });
+      });
     });
   }
 
@@ -138,6 +164,7 @@ export class RegistroPage implements OnInit {
   register(formTienda: NgForm){
     formTienda.controls["estado"].setValue("false");
     formTienda.controls["uuid"].setValue(this.uuid);
+    formTienda.controls["direccion"].setValue(this.address);
     let tienda: Tienda = formTienda.value;
     //console.log(this.tiendaForm.value)
     if(formTienda.valid) {
